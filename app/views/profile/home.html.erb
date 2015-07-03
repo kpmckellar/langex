@@ -5,4 +5,14 @@
 </header>
 
 <h1>Hello <%= @user.first_name %>! I hope you are loving <%= @user.location %> today.</h1>
-
+<div>
+	<h6>Here are local language lovers:</h6>
+		<% @matches.each do |match| %>
+			<div>
+				<%= match.language.language %>
+				<%= match.level %>
+				<%= match.user.first_name rescue nil %>
+			</div>
+			<%#= match.user.location %>
+		<% end %>
+</div>
