@@ -20,9 +20,7 @@ class LanguagesUsersController < ApplicationController
 
 	def create
 		if user_signed_in?
-		#@user_id = User.find_by_id(params[:id])
-		#@languages_user = current_user.languages_user.build(params[:languages_user])
-		#user_id = current_user
+		#@user = current_user
 	   	@languages_user = LanguagesUser.new(languages_user_params)
 	    #@languages_user.language_id = params[:languages_user][:language_id].to_i
 	    #@user_id = user_id.to_i
@@ -47,21 +45,13 @@ class LanguagesUsersController < ApplicationController
 
 
 	 private
-    # Use callbacks to share common setup or constraints between actions.
-    
-
     # Never trust parameters from the scary internet, only allow the white list through.
-
     def set_languages_user
-      # @languages_user = LanguagesUser.find(params[:user_id, :languages_id, :level])
       @languages_user = LanguagesUser.find(params[:id])
-      # @user_id = current_user
-      # @user = current_user
     end
 
     def languages_user_params
-    	#byebug
-      params.require(:languages_user).permit(:language_id, :user_id, :level)
+      params.require(:languages_user).permit(:language_id, :level, :user_id)
     end
 
 	
