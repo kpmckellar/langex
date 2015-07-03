@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   resources :languages
   resources :languages_users
   devise_for :users
+  
   root 'welcome#index'
 
   get 'profile/home', to: 'profile#home', as: 'home' 
-  get 'profile/create_lang' => 'profile#create_lang', as: 'create_lang'
 
   #get 'users/:user_id/challenges' => 'challenges#user_challenges', as: :user_challenges
   # The priority is based upon order of creation: first created -> highest priority.

@@ -11,5 +11,17 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:sign_up) << :location
   end
 
+ 
+  	private
+  	# def current_user
+   # 		 User.where(id: session[:user_id]).first
+   #  end
+  	# helper_method :current_user, :logged_in?
+
+   #   def logged_in?
+   #     current_user != nil
+   #   end
+ 
+
 
 end

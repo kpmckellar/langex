@@ -1,4 +1,4 @@
-<%= form_for.fields_for :languages_user(@languages_user, :as => 'create_lang' :controller => 'profile') do |f| %>
+<%= form_for(@languages_user, method: :post) do |f| %>
   <% if @languages_user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@languages_user.errors.count, "error") %> prohibited this language from being saved:</h2>
@@ -17,13 +17,15 @@
   </div>
   <div class="field">
     <%= f.label :level %><br>
-    <%= f.integer :level %>
+    <%= f.number_field :level %>
   </div>
   <div class="field">
-    <%= f.collection_select(:language_id, Language.all, :id, :language) %><br>
+    <%= f.collection_select(:language_id, Language.order('language ASC').all, :id, :language) %><br>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  %>
   </div>
 <% end %>
+
+<%#= link_to "Completed", progresses_path(:progress =>{:game_id => @level.game_id.to_i, :level_id => @level.id.to_i} ), :method => :post %>
 

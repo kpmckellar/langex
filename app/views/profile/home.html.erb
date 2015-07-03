@@ -1,5 +1,7 @@
 <header>
 	<%= link_to "Edit profile", edit_user_registration_path %>
+	<% link_to "Sign Out", destroy_user_session_path, method: :delete%>
+
 </header>
 
 <h1>Hello <%= @user.first_name %>! I hope you are loving <%= @user.location %> today.</h1>
