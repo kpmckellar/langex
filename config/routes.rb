@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get 'profile/home', to: 'profile#home', as: 'home' 
-
+  get 'profile/:language_id/match', to: 'profile#match', as: 'match'
   #get 'users/:user_id/challenges' => 'challenges#user_challenges', as: :user_challenges
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

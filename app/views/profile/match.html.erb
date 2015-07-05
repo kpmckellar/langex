@@ -1,0 +1,20 @@
+<h1>Matches!</h1>
+
+
+
+	<h3></h3>
+		<%#= @match %>
+		<% if @match != nil %>
+			<% @match.each do |match| %>
+				<div>
+					<%= match.language.language rescue nil %>
+					<%= match.level rescue nil %>
+					<%= match.user.first_name rescue nil %>
+			<% end %>
+			
+		<% else %>
+			<p>No matches</p>
+				
+		<% end %>
+		</div>
+</div>

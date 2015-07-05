@@ -6,7 +6,7 @@
 
 <h1>Hello <%= @user.first_name %>! I hope you are loving <%= @user.location %> today.</h1>
 <div>
-	<h6>Here are local language lovers:</h6>
+	<h3>Here are local language lovers:</h3>
 		<% @matches.each do |match| %>
 			<div>
 				<%= match.language.language %>
@@ -16,3 +16,39 @@
 			<%#= match.user.location %>
 		<% end %>
 </div>
+
+<div>
+	<h3>You are fluent in:</h3>
+		<% @fluent_lang.each do |match| %>
+			<div>
+				<%#= link_to match.language.language, match_path(match.language_id), id: => @match.language_id %>
+				<%= link_to(match.language.language, { controller: "profile", action: "match", language_id: match.language_id }) %>
+			</div>
+			<%#= match.user.location %>
+		<% end %>
+</div>
+
+<div>
+	<h3>You are learning:</h3>
+		<% @learning_lang.each do |match| %>
+			<div>
+				
+				<%= match.user.first_name rescue nil %>
+				<%= match.language.language %>
+
+				<%= match.level %>
+			</div>
+			<%#= match.user.location %>
+		<% end %>
+</div>
+
+<!-- <div>
+	<h3>Matches trial:</h3>
+		<%# match.each do |match| %>
+			<div>
+				<%#= match.user.first_name rescue nil %>
+				<%#= match.language.language %>
+			</div>
+			<%#= match.user.location %>
+		<%# end %>
+</div> -->

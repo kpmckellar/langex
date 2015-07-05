@@ -12,18 +12,22 @@ class LanguagesUsersController < ApplicationController
 
 	def new
 		@languages_user = LanguagesUser.new
-		#@user_id = current_user	
+		#@user = current_user	
 	end
 
 	def edit
 	end
 
 	def create
+
 		if user_signed_in?
+		#@langauges_user.user_id = current_user.id if current_user
 		#@user = current_user
-	   	@languages_user = LanguagesUser.new(languages_user_params)
-	    #@languages_user.language_id = params[:languages_user][:language_id].to_i
-	    #@user_id = user_id.to_i
+		#languages_user_params.merge!(user_id: current_user)
+		@languages_user = LanguagesUser.new(languages_user_params)
+
+		@languages_user.user_id = current_user.id
+	  
 
 			    respond_to do |format|
 			      if @languages_user.save
