@@ -1,18 +1,12 @@
 class ProfileController < ApplicationController
 
 	def home
-		#@user = User.find(params[:user_id])
 		@user = current_user
-		@langs = LanguagesUser.all
 		@fluent_lang = LanguagesUser.where("user_id = '#{@user.id}'" && "level = '5'")
 		@learning_lang = LanguagesUser.where("user_id = ? AND level < ?", current_user.id, 5)
-		@matches = LanguagesUser.where("level <= '4'" && "language_id = '1'" && "user_id = '#{@user.id}'")
+		@matches = LanguagesUser.where("level < ? AND user_id != ?", 5, current_user.id)
 		@language_id = LanguagesUser.find_by(@language_id)
 
-		
-		#@announcements = Announcement
-
-		 
 		
 	end
 

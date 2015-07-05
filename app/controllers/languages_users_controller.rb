@@ -13,31 +13,31 @@ class LanguagesUsersController < ApplicationController
 	def new
 		@languages_user = LanguagesUser.new
 		#@user = current_user	
+		r
 	end
 
 	def edit
 	end
 
 	def create
-
 		if user_signed_in?
 		#@langauges_user.user_id = current_user.id if current_user
 		#@user = current_user
 		#languages_user_params.merge!(user_id: current_user)
 		@languages_user = LanguagesUser.new(languages_user_params)
-
 		@languages_user.user_id = current_user.id
 	  
 
 			    respond_to do |format|
 			      if @languages_user.save
-			        format.html { redirect_to @languages_user, notice: 'Proficiency was successfully created.' }
+			        format.html { redirect_to home_path, notice: 'Proficiency was successfully created.' }
 			        format.json { render :show, status: :created, location: @languages_user }
 			      else
 			        format.html { render :new }
 			        format.json { render json: @languages_user.errors, status: :unprocessable_entity }
 			      end
 			    end
+
 			else
 				puts 'You must be logged in'
 				redirect_to new_languages_user_path

@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html>
+<div class="container">
 <header>
-<% if user_signed_in? %>
-	<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-<% end %>
+	<div class="pull-right">
+	<% if user_signed_in? %>
+		<%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-default" %>
+		<%= link_to "Add a Language", new_languages_user_path, class: "btn btn-default" %>
+		<%= link_to "Sign Out", destroy_user_session_path, class: "btn btn-default", method: :delete%>
+		
+			
+		<% else %>
+
+		<% end %>
+	</div>
+
 </header>
 <head>
   <title>LanguageExchange</title>
@@ -12,10 +22,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <div class="container">
+	<ul class="nav nav-tabs">
+		<li>
 
+		<p class="notice"><%= notice %></p>
+    	<p class="alert"><%= alert %></p>
+	</ul>
 	<%= yield %>
-
+  </div>
 </body>
+</div>
 </html>

@@ -1,30 +1,35 @@
 <header>
-	<%= link_to "Edit profile", edit_user_registration_path %>
-	<% link_to "Sign Out", destroy_user_session_path, method: :delete%>
 
 </header>
-
+<div class="container">
 <h1>Hello <%= @user.first_name %>! I hope you are loving <%= @user.location %> today.</h1>
 <div>
 	<h3>Here are local language lovers:</h3>
-		<% @matches.each do |match| %>
+		
 			<div>
-				<%= match.language.language %>
-				<%= match.level %>
-				<%= match.user.first_name rescue nil %>
-			</div>
-			<%#= match.user.location %>
+			<% @fluent_lang.each do |fluent_lang| %>
+				<% @matches.each do |match| %>
+				 <% if match.language_id == fluent_lang.language_id %>
+					<%= match.language.language %>
+					<%= match.level %>
+					<%= match.user.first_name rescue nil %>
+			<% else %>
+					 <h4>There are no matches for <%= fluent_lang.language.language %></h4>
+			
+				<% end %>
+			<% end %>
 		<% end %>
-</div>
+		</div>
+
+
+
 
 <div>
 	<h3>You are fluent in:</h3>
 		<% @fluent_lang.each do |match| %>
 			<div>
-				<%#= link_to match.language.language, match_path(match.language_id), id: => @match.language_id %>
 				<%= link_to(match.language.language, { controller: "profile", action: "match", language_id: match.language_id }) %>
 			</div>
-			<%#= match.user.location %>
 		<% end %>
 </div>
 
@@ -41,7 +46,8 @@
 			<%#= match.user.location %>
 		<% end %>
 </div>
-
+</div>
+</div>
 <!-- <div>
 	<h3>Matches trial:</h3>
 		<%# match.each do |match| %>
