@@ -8,12 +8,16 @@ class LanguagesUsersController < ApplicationController
 
 
 	def show
+
 	end
 
+	
+
 	def new
+
 		@languages_user = LanguagesUser.new
 		#@user = current_user	
-		r
+		
 	end
 
 	def edit
@@ -24,28 +28,46 @@ class LanguagesUsersController < ApplicationController
 		#@langauges_user.user_id = current_user.id if current_user
 		#@user = current_user
 		#languages_user_params.merge!(user_id: current_user)
-		@languages_user = LanguagesUser.new(languages_user_params)
-		@languages_user.user_id = current_user.id
-	  
+			@languages_user = LanguagesUser.new(languages_user_params)
+			@languages_user.user_id = current_user.id
+  
+		    respond_to do |format|
+		      if @languages_user.save
+		        format.html { redirect_to home_path, notice: 'Proficiency was successfully created.' }
+		        format.json { render :show, status: :created, location: @languages_user }
+		      else
+		        format.html { render :new }
+		        format.json { render json: @languages_user.errors, status: :unprocessable_entity }
+		      end
+		    end
 
-			    respond_to do |format|
-			      if @languages_user.save
-			        format.html { redirect_to home_path, notice: 'Proficiency was successfully created.' }
-			        format.json { render :show, status: :created, location: @languages_user }
-			      else
-			        format.html { render :new }
-			        format.json { render json: @languages_user.errors, status: :unprocessable_entity }
-			      end
-			    end
-
-			else
-				puts 'You must be logged in'
-				redirect_to new_languages_user_path
-			end
+		else
+			puts 'You must be logged in'
+			redirect_to new_languages_user_path
+		end
 	  end
+	  
+	def update
+			respond_to do |format|
+	      if @languages_user.update(languages_user_params)
+	        format.html { redirect_to home_path, notice: 'Language was successfully updated.' }
+	        format.json { render :show, status: :ok, location: @languages_user }
+	      else
+	        format.html { render :edit }
+	        format.json { render json: @languages_user.errors, status: :unprocessable_entity }
+	      end
+	  end
+	end	
+
+	def destroy
+		@languages_user.destroy
+    		respond_to do |format|
+      		format.html { redirect_to home_path, notice: 'Language was removed.' }
+      		format.json { head :no_content }
+		end
+	end
 
 
-	
 
 
 	 private

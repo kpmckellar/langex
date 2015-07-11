@@ -1,0 +1,19 @@
+<div class="row">
+	<div class ="col-xs-4 ">
+		<p class="round-image-50"><%= image_tag(@user.avatar.url(:thumb)) rescue nil %></p>
+	</div>
+	<div class="col-xs-4 text-right .col-md-offset-1">
+		<h4 class="text-right"><%= @user.first_name %></h4>
+		<h5 class="text-right"><%= @user.location %></h5>
+		<h6>Fluent in:</h6>
+			<% @fluent_languages.each do |proficiency| %>
+				<p><%= proficiency.language.language %></p>
+			<% end %>
+		<h6><%= @user.first_name %> is learning:</h6>
+			<% @nonfluent_languages.each do |proficiency| %>
+				<p><%= proficiency.language.language %></p>
+			<% end %>
+	</div>
+</div>
+<hr>
+<br>

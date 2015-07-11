@@ -1,0 +1,34 @@
+<h1> Edit </h1>
+
+<%= form_for(@languages_user) do |f| %>
+  <% if @languages_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@languages_user.errors.count, "error") %> prohibited this language from being saved:</h2>
+
+      <ul>
+      <% @languages_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+   <div class="field">
+    <%= f.collection_select(:language_id, Language.order('language ASC').all, :id, :language) %><br>
+  </div>
+  <div class="field">
+    <%= f.label :level %><br>
+    <%= f.number_field :level %>
+  </div>
+ 
+  <div class="actions">
+    <%= f.submit "Update Proficiency", method: :patch %>
+  </div>
+  
+
+<% end %>
+
+<%= form_for(@languages_user, url: languages_user_path, method: :delete) do |f| %>
+  <div class="actions">
+    <%= f.submit "Delete Proficiency" %>
+  </div>
+<% end %>

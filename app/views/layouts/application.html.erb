@@ -1,36 +1,46 @@
 <!DOCTYPE html>
-<html>
-<div class="container">
-<header>
-	<div class="pull-right">
-	<% if user_signed_in? %>
-		<%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-default" %>
-		<%= link_to "Add a Language", new_languages_user_path, class: "btn btn-default" %>
-		<%= link_to "Sign Out", destroy_user_session_path, class: "btn btn-default", method: :delete%>
-		
+<html>		
+	<head>
+	  <title>LanguageExchange</title>
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<div class="container">
+
+		<div class="row" >
+			<br>
+			<header>
+
+				<div class="col-md-4 img-rounded" style="display:inline;">
+					<%= image_tag(current_user.avatar.url(:thumb), :class=>"img-rounded" ) rescue nil %>
+				</div>
+					
+				<div class="col-md-8 pull-right" style="margin-top:10px;">
+					<% if user_signed_in? %>
+						<%= link_to "Home", home_path, class: "btn btn-default" %>
+						<%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-default" %>
+						<%= link_to "Add a Language", new_languages_user_path, class: "btn btn-default" %>
+						<%= link_to "Sign Out", destroy_user_session_path, class: "btn btn-default", method: :delete%>
+					<% else %>
+
+					<% end %>
+				</div>
+
+			</header>
+		</div>
+		<body>
+			<!-- <div class="col-md-4" style=""> -->
+
+				  <% if flash[:alert] %>
+				    <p class="flash-error"><%= flash[:alert] %></p>
+				  <% end %>
+				  <% if flash[:notice] %>
+				    <p class="flash-notice"><%= flash[:notice] %></p>
+				  <% end %>
 			
-		<% else %>
-
-		<% end %>
+				<%= yield %>
+			<!-- </div> -->
+		</body>
 	</div>
-
-</header>
-<head>
-  <title>LanguageExchange</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div class="container">
-	<ul class="nav nav-tabs">
-		<li>
-
-		<p class="notice"><%= notice %></p>
-    	<p class="alert"><%= alert %></p>
-	</ul>
-	<%= yield %>
-  </div>
-</body>
-</div>
 </html>

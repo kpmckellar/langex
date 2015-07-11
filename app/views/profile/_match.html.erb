@@ -1,0 +1,62 @@
+
+
+<%# @fluent_user.each do |fluent_lang| %>
+
+<div class="container">
+	<h2> Here are potential matches:<h2>
+	<% @fluent_languages.each do |proficiency| %>
+				<% if current_user != @nonproficient_users %>
+					<% @nonproficient_users = User.seeking_proficiency_in(proficiency.language.id) %>
+						<% @nonproficient_users.each do |nonprof_user| %>
+
+	<% @nonfluent_languages.each do |nonproficiency| %>
+	<% @proficient_users = User.proficient_in(nonproficiency.language.id) %>
+
+				<% if @proficient_users.any? %>
+				<% @proficient_users.each do |user| %>
+					<% if nonprof_user == user %>
+						<% if nonprof_user != current_user %>
+							<div class="profile-holder">
+							
+							<%= render partial: 'user', object: nonprof_user  %>
+						</div>
+						<% end %>
+						<% end %>
+					<% end %>
+				<% end %>
+				<% end %>
+				<% end %>
+			
+		
+	<% end %>
+	<% end %>
+
+<%# end %>
+</div>
+
+
+
+
+<div class="container">
+		<% @nonfluent_languages.each do |nonproficiency| %>
+		<div class="row">
+			<h2>Here are potential mentors in <%= nonproficiency.language.language %></h2>
+			<% @proficient_users = User.proficient_in(nonproficiency.language.id) %>
+				<% if @proficient_users.any? %>
+					<% @proficient_users.each do |user| %>
+					<div class="profile-holder">
+					<%= render partial: 'user', object: user %>
+					</div>
+					<% end %>
+				<% else %>
+					<p>Sorry there are no mentors in this language.</p>
+				<% end %>
+			</div>
+			<% end %>
+			<hr>
+		</div>
+</div>
+
+
+
+

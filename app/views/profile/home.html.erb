@@ -1,60 +1,77 @@
-<header>
-
-</header>
-<div class="container">
-<h1>Hello <%= @user.first_name %>! I hope you are loving <%= @user.location %> today.</h1>
-<div>
-	<h3>Here are local language lovers:</h3>
+<br>
+<div class="bg-info">
+	<div class="row">
 		
-			<div>
-			<% @fluent_lang.each do |fluent_lang| %>
-				<% @matches.each do |match| %>
-				 <% if match.language_id == fluent_lang.language_id %>
-					<%= match.language.language %>
-					<%= match.level %>
-					<%= match.user.first_name rescue nil %>
-			<% else %>
-					 <h4>There are no matches for <%= fluent_lang.language.language %></h4>
-			
-				<% end %>
-			<% end %>
-		<% end %>
+		<div class="col-xs-1">
 		</div>
+		<div class ="col-xs-6" "clear-fix">
+			<h1>Hello <%= current_user.first_name %>
+			<p class="round-image-50"><%= image_tag(current_user.avatar.url(:thumb)) rescue nil %></p>
+			
+		</div>
+		<div class="col-xs-4 float-right">
+			<h4 class="text-right"><%= current_user.first_name %></h4>
+			<h5 class="text-right"><%= current_user.location %></h5>
+			<h6>Fluent in:</h6>
+				<% @fluent_languages.each do |proficiency| %>
+					<p><%= proficiency.language.language %></p>
+				<% end %>
+			<h6>You're learning:</h6>
+				<% @nonfluent_languages.each do |proficiency| %>
+					<p><%= link_to proficiency.language.language, "/languages_users/#{proficiency.id}/edit" %></p>
+				<% end %>
+		</div>
+		<div class="col-xs-1" >
+		</div>
+	</div>
+</div>
 
+<%= render partial: 'match'%>
 
-
-
-<div>
-	<h3>You are fluent in:</h3>
-		<% @fluent_lang.each do |match| %>
-			<div>
-				<%= link_to(match.language.language, { controller: "profile", action: "match", language_id: match.language_id }) %>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<hr>
+<div class="container">
+	<% @fluent_languages.each do |proficiency| %>
+		<div class="row">
+			<h2>The following users are seeking proficiency in <%= proficiency.language.language %></h2>
+				<% if current_user != @nonproficient_users %>
+					<% @nonproficient_users = User.seeking_proficiency_in(proficiency.language.id) %>
+						<% @nonproficient_users.each do |user| %>
+						<div class="profile-holder">
+							
+							<%= render partial: 'user', object: user  %>
+						</div>
+				<% end %>
+				<% end %>
+			
+		</div>
+	<% end %>
+</div>
+<hr>
+<div class="container">
+		<% @nonfluent_languages.each do |proficiency| %>
+		<div class="row">
+			<h2>Here are potential mentors in <%= proficiency.language.language %></h2>
+			<% @proficient_users = User.proficient_in(proficiency.language.id) %>
+				<% if @proficient_users.any? %>
+					<% @proficient_users.each do |user| %>
+					<div class="profile-holder">
+					<%= render partial: 'user', object: user %>
+					</div>
+				<!-- 	<div class ="col-xs-4 center-block"> -->
+						<!-- <h3><%#= user.first_name rescue nil %></h3>
+						<%#= link_to image_tag(user.avatar.url(:thumb)), "/profile/#{user.id}/view" rescue nil %> -->
+					<% end %>
+				<!-- </div> -->
+				<% else %>
+					<p>Sorry there are no mentors in this language.</p>
+				<% end %>
 			</div>
-		<% end %>
+			<% end %>
+			<hr>
+		</div>
 </div>
 
-<div>
-	<h3>You are learning:</h3>
-		<% @learning_lang.each do |match| %>
-			<div>
-				
-				<%= match.user.first_name rescue nil %>
-				<%= match.language.language %>
 
-				<%= match.level %>
-			</div>
-			<%#= match.user.location %>
-		<% end %>
-</div>
-</div>
-</div>
-<!-- <div>
-	<h3>Matches trial:</h3>
-		<%# match.each do |match| %>
-			<div>
-				<%#= match.user.first_name rescue nil %>
-				<%#= match.language.language %>
-			</div>
-			<%#= match.user.location %>
-		<%# end %>
-</div> -->
+
+
