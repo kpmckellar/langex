@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   resources :languages
   resources :languages_users
+  resources :conversations, only: [:index, :show, :destroy]
+  resources :messages, only: [:new, :create]
   devise_for :users
   
   root 'welcome#index'

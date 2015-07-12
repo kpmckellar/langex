@@ -19,6 +19,7 @@
 				<div class="col-md-8 pull-right" style="margin-top:10px;">
 					<% if user_signed_in? %>
 						<%= link_to "Home", home_path, class: "btn btn-default" %>
+						<%= link_to 'Your Conversations', conversations_path, class: "btn btn-default" %>
 						<%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-default" %>
 						<%= link_to "Add a Language", new_languages_user_path, class: "btn btn-default" %>
 						<%= link_to "Sign Out", destroy_user_session_path, class: "btn btn-default", method: :delete%>

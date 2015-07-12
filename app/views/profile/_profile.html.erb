@@ -3,6 +3,11 @@
 		<p class="round-image-50"><%= image_tag(@user.avatar.url(:thumb)) rescue nil %></p>
 	</div>
 	<div class="col-xs-4 text-right .col-md-offset-1">
+	<%# unless current_user == user %>
+        <%= link_to 'Send message', new_message_path(to: @user.id), class: 'btn btn-default btn-sm' %>
+      <%# end %>
+    </div>
+	<div class="col-xs-4 text-right .col-md-offset-1">
 		<h4 class="text-right"><%= @user.first_name %></h4>
 		<h5 class="text-right"><%= @user.location %></h5>
 		<h6>Fluent in:</h6>

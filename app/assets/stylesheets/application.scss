@@ -17,4 +17,19 @@
 @import "bootstrap";
 @import "bootstrap-sprockets";
 
+.alert-notice {
+  @extend .alert-success;
+}
+ 
+.alert-alert {
+  @extend .alert-warning;
+}
+
+
+.messages {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
 
