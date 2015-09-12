@@ -4,26 +4,14 @@ Rails.application.routes.draw do
   resources :languages_users
   # resources :conversations, only: [:index, :show, :destroy]
   resources :messages, only: [:new, :create]
-  resources :conversations, only: [:index, :show, :destroy] do
-    member do
-      post :reply
-    end
-  end
-  resources :conversations, only: [:index, :show, :destroy] do
-    member do
-      post :restore
-    end
-  end
-  resources :conversations, only: [:index, :show, :destroy] do
-    collection do
-      delete :empty_trash
-    end
-  end
+  resources :conversations, only: [:index, :show, :destroy] 
+  # end
+  
   
   devise_for :users
   
   root 'welcome#index'
-
+  get 'messages/send_message', to: 'messages#send_message', as: 'send_message'
   get 'profile/home', to: 'profile#home', as: 'home' 
   get 'profile/:id/view', to: 'profile#view', as: 'view' 
   get 'profile/:language_id/match', to: 'profile#match', as: 'match'

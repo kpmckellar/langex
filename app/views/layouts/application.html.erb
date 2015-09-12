@@ -12,6 +12,7 @@
 			<br>
 			<header>
 
+
 				<div class="col-md-4 img-rounded" style="display:inline;">
 					<%= image_tag(current_user.avatar.url(:thumb), :class=>"img-rounded" ) rescue nil %>
 				</div>
@@ -32,7 +33,9 @@
 		</div>
 		<body>
 			<!-- <div class="col-md-4" style=""> -->
-
+					<div class="page-header">
+   					 <h1><%= yield :page_header %></h1>
+ 				    </div>
 				  <% if flash[:alert] %>
 				    <p class="flash-error"><%= flash[:alert] %></p>
 				  <% end %>

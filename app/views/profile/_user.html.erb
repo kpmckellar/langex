@@ -1,6 +1,19 @@
 <div class="user-profile">
 	<h3><%= user.first_name %></h3>
 	<h3><%#= fluent_lang.user %></h3>
-	<p>Fluent in</p>
+	<p>Fluent in:
+		<% user.languages_users.each do |language| %>
+			<% if language.level > 4 %>
+				<%= language.language.language %>
+			<% end %>
+		<% end %>
+	</p>
+	<p>Currently learning:
+		<% user.languages_users.each do |language| %>
+			<% if language.level < 5 %>
+				<%= language.language.language %>
+			<% end %>
+		<% end %>
+	</p>
 	<%= link_to image_tag(user.avatar.url(:thumb)), "/profile/#{user.id}/view" %>
 </div>

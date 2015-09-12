@@ -4,6 +4,7 @@ class ProfileController < ApplicationController
 		@fluent_languages = LanguagesUser.where(user: current_user.id).where("level > 4")
   		@nonfluent_languages = LanguagesUser.where("level < 5").where(user: current_user.id)
 
+  		@fluent_lang = LanguagesUser.where("level > 4")
 
   		# @user = User.find(params[:user_id])
   		# @fluent_user = LanguagesUser.where(user: @user.id).where("level > 4")
