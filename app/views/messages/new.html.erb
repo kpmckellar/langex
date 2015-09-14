@@ -1,5 +1,7 @@
 <%# page_header "Start Conversation" %>
-<h1>Start Conversation</h1>
+<h1>Start a Conversation with <%= @chosen_recipient.first_name %></h1>
+<p><%= avatar_for @chosen_recipient %></p>
+
 <%= form_tag messages_path, method: :post do %>
   <!-- <div class="form-group">
     <%#= label_tag 'message[subject]', 'Subject' %>
@@ -7,14 +9,18 @@
   </div> -->
 
   <div class="form-group">
-    <%= label_tag 'message[body]', 'Message' %>
-    <%= text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', required: true %>
+    <%#= label_tag 'message[body]', 'Message' %>
+    <%= text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', required: true %>
   </div>
-
   <div class="form-group">
-    <%= label_tag 'recipients', 'Choose recipients' %>
-    <%= select_tag 'recipients', recipients_options, multiple: true, class: 'form-control' %>
-  </div>
+  <%#= label_tag 'recipients', 'Choose recipients' %>
+  <%= hidden_field_tag 'recipients', recipients_options(@chosen_recipient), multiple: true, class: 'form-control chosen-it' %>
+</div>
+
+<!--   <div class="form-group">
+    <%#= label_tag 'recipients', 'Choose recipients' %>
+    <%#= select_tag 'recipients', recipients_options, multiple: true, class: 'form-control',  %>
+  </div> -->
 
   <%= submit_tag 'Send', class: 'btn btn-primary' %>
 <% end %>

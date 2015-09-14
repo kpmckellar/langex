@@ -4,9 +4,26 @@ Rails.application.routes.draw do
   resources :languages_users
   # resources :conversations, only: [:index, :show, :destroy]
   resources :messages, only: [:new, :create]
-  resources :conversations, only: [:index, :show, :destroy] 
-  # end
   
+
+  resources :conversations, only: [:index, :show, :destroy] do
+    member do
+      post :reply
+    end
+  end
+
+  resources :conversations, only: [:index, :show, :destroy] do
+    member do
+      post :restore
+    end
+  end
+  # end
+  resources :conversations, only: [:index, :show, :destroy] do
+    collection do
+      delete :empty_trash
+    end
+  end
+    
   
   devise_for :users
   

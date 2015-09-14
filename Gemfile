@@ -30,6 +30,10 @@ gem "paperclip", "~> 4.3"
 # gem 'bcrypt', '~> 3.1.7'
 gem 'mailboxer'
 gem 'gravatar_image_tag'
+
+
+
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

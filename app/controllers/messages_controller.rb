@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
   def new
+    @chosen_recipient = User.find_by(id: params[:to].to_i) if params[:to]
    #@user = User.find(params[:user])
     #@message = current_user.messages.new
   	#@user = User.find_by(id: params[:to].to_i) if params[:to]
