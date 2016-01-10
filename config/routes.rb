@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 
+  resources :tags
+  resources :topics
+  resources :meetings
   resources :languages
   resources :languages_users
   # resources :conversations, only: [:index, :show, :destroy]
   resources :messages, only: [:new, :create]
   
+  #resources :meetings, only: [new edit show create], controller: "home"
 
   resources :conversations, only: [:index, :show, :destroy] do
     member do
@@ -28,10 +32,10 @@ Rails.application.routes.draw do
   devise_for :users
   
   root 'welcome#index'
+  #get 'meetings', to: 'meetings#index', as: 'meetings'
   get 'messages/send_message', to: 'messages#send_message', as: 'send_message'
   get 'profile/home', to: 'profile#home', as: 'home' 
   get 'profile/:id/view', to: 'profile#view', as: 'view' 
-  get 'profile/:language_id/match', to: 'profile#match', as: 'match'
   get 'profile/:languages_user_id/manage', to: 'profile#manage', as: 'manage'
 
   get 'languages_users/:id/edit', to: 'languages_users#edit', as: 'edit'

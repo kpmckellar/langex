@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  language_id: 
+  level: 1
+  tags_id: 
+  title: MyString
+  body: MyText
+  approved: false
+
+two:
+  user_id: 
+  language_id: 
+  level: 1
+  tags_id: 
+  title: MyString
+  body: MyText
+  approved: false

@@ -1,8 +1,6 @@
-<div class="container">
-	<h1>Meetings!</h1>
+<p id="notice"><%= notice %></p>
 
-
-	<h1>Listing Meetings</h1>
+<h1>Listing Meetings</h1>
 
 <table>
   <thead>
@@ -18,22 +16,21 @@
   <tbody>
     <% @meetings.each do |meeting| %>
       <tr>
-        <td><%= meeting.requestor_id %></td>
-        <td><%#= meeting.requestor.first_name %></td>
-        <td><%= meeting.requestee_id %></td>
+        <td><%= meeting.requestor.first_name %></td>
+        <td><%= meeting.requestee.first_name %></td>
         <td><%= meeting.meeting_time %></td>
         <td><%= meeting.accepted %></td>
-        <td><%= link_to 'Show', meeting %></td>
-        <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
+        <td><%#= link_to 'Show', meeting %></td>
+        <td><%#= link_to 'Edit', edit_meeting_path(meeting) %></td>
         <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
-    <% end %>
+    <%# end %>
   </tbody>
 </table>
 
 <br>
 
+<div><%#= render partial: 'requested' %></div>
+
 <%= link_to 'New Meeting', new_meeting_path %>
-
-
-</div>

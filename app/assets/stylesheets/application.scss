@@ -17,6 +17,36 @@
 @import "bootstrap";
 @import "bootstrap-sprockets";
 
+header {
+	background-color: #eee;
+	padding: 10px;
+}
+
+footer {
+	background-color: #eee;
+	padding: 10px;
+	text-align: right;
+	font-color: white;
+}
+
+body 	{
+	font-family: "Arial Black", Gadget, sans-serif;
+}
+
+
+
+.wrapper	{
+	width: 960px;
+	margin: 0 auto;
+}
+
+.clear	{
+	clear: both;
+}
+
+.profile-container	{
+	clear: both;
+}
 
 .alert-notice {
   @extend .alert-success;
@@ -33,4 +63,39 @@
   margin-bottom: 1em;
   margin-top: 1em;
 }
+
+.header-logo	{
+	font-size: 50px;
+}
+
+
+
+
+.profile-picture	{
+	margin: 20px;
+	boarder: solid;
+	padding: 50px 20px;
+	width: 30%;
+	float: left;
+
+}
+
+.profile-nav	{
+	float: right;
+	margin: 10px;
+	boarder: solid;
+	padding: 50px 10px;
+	width: 30%;
+}	
+
+.btn-profile	{
+	font-family: "Helvetica";
+	font-weight: bold;
+	font-size: 13px;
+	padding: 7px 13px;
+	boarder-radius: 20px;
+	background-color: #ccffe5;
+	boarder: 1px solid;
+	}
+
 

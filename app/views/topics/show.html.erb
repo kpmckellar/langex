@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @topic.user.first_name %>
+</p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @topic.language.language %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @topic.level %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%#= @topic.tags %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @topic.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @topic.body %>
+</p>
+
+<p>
+  <strong>Approved:</strong>
+  <%= @topic.approved %>
+</p>
+
+<%= link_to 'Edit', edit_topic_path(@topic) %> |
+<%= link_to 'Back', topics_path %>

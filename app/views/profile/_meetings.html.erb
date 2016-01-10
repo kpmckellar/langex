@@ -1,0 +1,41 @@
+
+
+<%#= link_to 'New Meeting', new_meeting_path %>
+<h2>Hello <%= current_user.first_name %>. Here are your upcoming meetings.</h2>
+
+<% @meetings.each do |meeting| %>
+<div class="user-profile">
+  <h3><%#= meeting.requestee.first_name %></h3>
+  <%= @meeting_user.first_name %>
+  <h3><%#= fluent_lang.user %></h3>
+  <p> Meeting:
+    <%= meeting.meeting_time %>
+  </p>
+
+  
+  <%= image_tag(@meeting_user.avatar.url(:thumb)) %>
+  <p>
+    <% if meeting.accepted == false %>
+      <% if current_user == meeting.requestee %>
+        <%= form_for(meeting) do |f| %>
+          <div class="field">
+            <%= f.hidden_field :accepted, value: true %>
+          </div>
+          <div class="actions">
+            <%= f.submit "Accept" %>
+          </div>
+        <% end %>
+
+        <!-- <button class="btn-profile"><%#= link_to "Accept", meetings_path %></button> -->
+      <% else %>
+        Pending Approval
+      <% end %>
+
+    <% else %>
+      <button class="btn-profile"><%= link_to "Plan Meeting", topics_path %></button>
+
+    <% end %>
+
+  </p>
+</div>
+<% end %>

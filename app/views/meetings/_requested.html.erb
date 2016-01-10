@@ -1,8 +1,6 @@
-<div class="container">
-	<h1>Meetings!</h1>
+<p id="notice"><%= notice %></p>
 
-
-	<h1>Listing Meetings</h1>
+<h1>Pending Meeting Requests:</h1>
 
 <table>
   <thead>
@@ -16,24 +14,21 @@
   </thead>
 
   <tbody>
-    <% @meetings.each do |meeting| %>
+    <% @pending_meetings.each do |meeting| %>
       <tr>
-        <td><%= meeting.requestor_id %></td>
-        <td><%#= meeting.requestor.first_name %></td>
-        <td><%= meeting.requestee_id %></td>
+        <% if meeting.requestor == current_user.id %>
+        <td><%= meeting.requestor %></td>
+        <td><%= meeting.requestee %></td>
+        <td><%= meeting.requestee %></td>
         <td><%= meeting.meeting_time %></td>
         <td><%= meeting.accepted %></td>
         <td><%= link_to 'Show', meeting %></td>
         <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
         <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Meeting', new_meeting_path %>
-
-
-</div>

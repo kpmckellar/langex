@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150912184016) do
+ActiveRecord::Schema.define(version: 20151220193810) do
 
   create_table "languages", force: :cascade do |t|
     t.string   "language"
@@ -80,6 +80,36 @@ ActiveRecord::Schema.define(version: 20150912184016) do
 
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
+
+  create_table "meetings", force: :cascade do |t|
+    t.integer  "requestor_id"
+    t.integer  "requestee_id"
+    t.datetime "meeting_time"
+    t.boolean  "accepted"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "requestor"
+    t.integer  "requestee"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "language_id"
+    t.integer "level"
+    t.integer "tags_id"
+    t.string  "title"
+    t.text    "body"
+    t.boolean "approved"
+    t.text    "requestor_topics"
+  end
+
+  add_index "topics", ["language_id"], name: "index_topics_on_language_id"
+  add_index "topics", ["tags_id"], name: "index_topics_on_tags_id"
+  add_index "topics", ["user_id"], name: "index_topics_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

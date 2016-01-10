@@ -1,0 +1,47 @@
+
+<%= form_for(@meeting) do |f| %>
+  <% if @meeting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@meeting.errors.count, "error") %> prohibited this meeting from being saved:</h2>
+
+      <ul>
+      <% @meeting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <h4>Request a meeting with <%#= @meeting.requestee.first_name %></h4>
+
+  <div class="field">
+    <%= f.label :requestor_id %><br>
+    <%= f.hidden_field :requestor_id, :value => current_user.id %>
+
+    <%#= f.text_field(:requestor_id) %>
+    <%#= f.hidden_field :requestor_id :value => params[:requestor_id] %>
+  </div>
+  <div class="field">
+    <%= f.label :requestee_id %><br>
+    <%#= f.text_field(:requestee_id) %>
+    <%= f.hidden_field :requestee_id, value: params[:requestee_id] %>
+     <%#= f.hidden_field :requestee_id, :value => @requestee %>
+        <%#= hidden_field_tag 'requestee_id', @requestee_id.id, class: 'form-control chosen-it' %>
+    <%#= f.hidden_field :requestee, :value => @requestee.id %>
+    <%#= f.hidden_field :requestee_id :value => params[:requestee_id] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :meeting_time %><br>
+    <%= f.datetime_select :meeting_time %>
+  </div>
+
+  <div class="field">
+    <%= f.label :accepted %><br>
+    <%= f.check_box :accepted %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
