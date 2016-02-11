@@ -43,7 +43,7 @@
   <div class="form-group">
         <%= f.label :avatar, class: 'col-sm-2 control-label'  %>
         <div class="col-sm-6">
-            <%= f.file_field :avatar %>
+            <%= f.file_field :avatar, value:@current_user.avatar %>
         </div>
   </div>
 <br>
