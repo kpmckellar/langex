@@ -35,7 +35,7 @@ gem "paperclip", "~> 4.3"
 gem 'mailboxer'
 gem 'gravatar_image_tag'
 
-
+gem 'cancan'
 
 
 # Use Unicorn as the app server

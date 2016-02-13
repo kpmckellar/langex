@@ -32,8 +32,6 @@ class ProfileController < ApplicationController
 		
 	def admin_view
 		@users = User.all
-
-		
 	end
 	
 
