@@ -20,7 +20,6 @@ class User < ActiveRecord::Base
     email
   end
 
-  
 
   # def active_for_authentication? 
   #   super && approved? 
