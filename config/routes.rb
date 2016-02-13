@@ -37,8 +37,9 @@ Rails.application.routes.draw do
   get 'profile/home', to: 'profile#home', as: 'home' 
   get 'profile/:id/view', to: 'profile#view', as: 'view' 
   get 'profile/:languages_user_id/manage', to: 'profile#manage', as: 'manage'
-
+  get 'profile/admin_view', to: 'profile#admin_view', as: 'admin_view'
   get 'languages_users/:id/edit', to: 'languages_users#edit', as: 'edit'
+  get 'languages_users/:id/sign_up', to: 'languages_users#sign_up', as: 'sign_up'
   #get 'users/:user_id/challenges' => 'challenges#user_challenges', as: :user_challenges
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

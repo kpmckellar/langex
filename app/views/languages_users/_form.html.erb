@@ -10,12 +10,22 @@
       </ul>
     </div>
   <% end %>
+  <h3>What is your native language?</h3>
    <div class="field">
     <%= f.collection_select(:language_id, Language.order('language ASC').all, :id, :language) %><br>
   </div>
   <div class="field">
-    <%= f.label :level %><br>
-    <%= f.number_field :level %>
+    <%#= f.label :level %><br>
+    <%= f.hidden_field :level, value: 5 %>
+  </div>
+
+  <h3>What language are you learning?</h3>
+   <div class="field">
+    <%= f.collection_select(:language_id, Language.order('language ASC').all, :id, :language) %><br>
+  </div>
+  <div class="field">
+    <%#= f.label :level %><br>
+    <%= f.hidden_field :level, value: 1 %>
   </div>
  
   <div class="actions">
@@ -23,6 +33,10 @@
   </div>
   
 <% end %>
+
+<div>
+  <p>You can add more languages that you're learning, after reaching level 10!</p>
+</div>
 
 <%#= link_to "Completed", progresses_path(:progress =>{:game_id => @level.game_id.to_i, :level_id => @level.id.to_i} ), :method => :post %>
 

@@ -11,7 +11,9 @@ class LanguagesUsersController < ApplicationController
 
 	end
 
-	
+	def sign_up
+
+	end
 
 	def new
 

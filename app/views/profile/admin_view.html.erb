@@ -1,0 +1,38 @@
+<div>
+
+<h1>Admin View</h1>
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Native Language</th>
+      <th>Learning Language</th>
+      <th>Admin?</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%#= user.meeting_time %></td>
+        <td><%= user.admin %></td>
+        <td><%=  %></td>
+        <td><%=  %></td>
+        <td><%#= link_to 'Show', meeting %></td>
+        <td><%#= link_to 'Edit', edit_user_registration_path(user) %></td>
+        <td><%#= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+      </tr>
+    <%# end %>
+  </tbody>
+</table>
+	
+
+<%# end %>

@@ -30,6 +30,11 @@ class ProfileController < ApplicationController
 	    #@meetings = Meetings.where(requestor: @current_user || requestee: @current_user)
   	end
 		
+	def admin_view
+		@users = User.all
+
+		
+	end
 	
 
 	def manage
