@@ -1,0 +1,22 @@
+<p><%= f.label :first_name %></p>
+<p><%= f.text_field :first_name %></p>
+ 
+<p><%= f.label :last_name %></p>
+<p><%= f.text_field :last_name %></p>
+ 
+<p><%= f.label :email %></p>
+<p><%= f.text_field :email %></p>
+ 
+<% if can? :read, Role %>
+  <!-- <p><%#= f.label :role %></p>
+  <ul class="no-pad no-bullets">
+  	<%#= check_box_tag(:roles) %>
+  	<%#= label_tag(:role, :role) %> -->
+<!--   	<div class="form-group"> -->
+    <%#= f.text_field :role_id %>
+    <%= collection_select(:user, :role_id, Role.all, :id, :name, {prompt: true}) %>
+<!--   </div> -->
+
+    <%#= checkboxes(@user, :role_ids, @accessible_roles, :name) %>
+
+<% end %>

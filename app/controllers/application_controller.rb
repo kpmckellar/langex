@@ -4,6 +4,13 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
 
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "Access denied!"
+    redirect_to root_url
+  end
+
+  #include CanCan::ControllerAdditions
+
   protect_from_forgery
   # rescue_from CanCan::AccessDenied do |exception|
   #   flash[:error] = exception.message
@@ -17,10 +24,13 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:sign_up) << :nationality
       devise_parameter_sanitizer.for(:sign_up) << :bio
       devise_parameter_sanitizer.for(:sign_up) << :avatar
+      devise_parameter_sanitizer.for(:sign_up) << :role_id
       devise_parameter_sanitizer.for(:account_update) << :avatar
       devise_parameter_sanitizer.for(:account_update) << :first_name
       devise_parameter_sanitizer.for(:account_update) << :bio
       devise_parameter_sanitizer.for(:account_update) << :admin
+      devise_parameter_sanitizer.for(:account_update) << :approved
+      devise_parameter_sanitizer.for(:account_update) << :role_id
 
   end
 

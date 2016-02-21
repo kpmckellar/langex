@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+
+
+  resources :roles
   resources :tags
   resources :topics
   resources :meetings
@@ -28,20 +31,20 @@ Rails.application.routes.draw do
     end
   end
     
-  
-  #devise_for :users
-  # DeviseRolesUserManagement::Application.routes.draw do
   devise_for :users
-   # devise_scope :user do
-   #     get '/login' => 'devise/sessions#new'
-   #     get '/logout' => 'devise/sessions#destroy'
-   #   end
-   #   resources :user, :controller => "user"
-   #   root :to => "dashboard#index"
-   # end
+  # resources :users do
+  #   post :admin #-> url.com/users/:user_id/admin
+  # end
+  
+
+  
+
+  # scope "/admin" do
+    resources :users
+  # end
+ 
   
   root 'welcome#index'
-  #get 'meetings', to: 'meetings#index', as: 'meetings'
   get 'messages/send_message', to: 'messages#send_message', as: 'send_message'
   get 'profile/home', to: 'profile#home', as: 'home' 
   get 'profile/:id/view', to: 'profile#view', as: 'view' 

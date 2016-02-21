@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  belongs_to :role
+
   acts_as_messageable
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
@@ -13,6 +15,12 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   validates_presence_of :first_name, :last_name, :location, :nationality, :bio
 	
+  before_save :assign_role
+
+  def assign_role
+    self.role = Role.find_by name: "user" if self.role.nil?
+  end
+
   has_many :languages_users
 	has_many :languages, :through => :languages_users
   #validates_uniqueness_of :username
@@ -20,6 +28,18 @@ class User < ActiveRecord::Base
     email
   end
 
+
+  # ROLES = {0 => :guest, 1 => :user, 2 => :moderator, 3 => :admin}
+
+  # attr_reader :role
+
+  # def initialize(role_id = 0)
+  #   @role = ROLES.has_key?(role_id.to_i) ? ROLES[role_id.to_i] : ROLES[0]
+  # end
+
+  # def role?(role_name)
+  #   role == role_name
+  # end
 
   # def active_for_authentication? 
   #   super && approved? 

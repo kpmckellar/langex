@@ -3,8 +3,22 @@
 <h1>Admin View</h1>
 
 
+<%#= link_to "All Users", :action => "index" %>
+|
+<%#= link_to "Users awaiting approval", :action => "index", :approved => "false" %>
 
 <table>
+    <% @users.each do |user| %>
+        <tr>
+            <td><%= user.email %></td>
+            <td><%= user.approved? %></td>
+            <td><%= user.role.name rescue nil %></td>
+            <td><%#= link_to "Edit", edit_user_path(user) %></td>
+        </tr>
+    <% end %>
+</table>
+
+<!-- <table>
   <thead>
     <tr>
       <th>First Name</th>
@@ -17,22 +31,22 @@
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
+    <%# @users.each do |user| %>
       <tr>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
+        <td><%#= user.first_name %></td>
+        <td><%#= user.last_name %></td>
         <td><%#= user.meeting_time %></td>
-        <td><%= user.admin %></td>
+        <td><%#= user.admin %></td>
         <td><%=  %></td>
         <td><%=  %></td>
         <td><%#= link_to 'Show', meeting %></td>
         <td><%#= link_to 'Edit', edit_user_path(user) %></td>
         <td><%#= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <% end %>
+    <%# end %>
       </tr>
     <%# end %>
   </tbody>
 </table>
-	
+	 -->
 
 <%# end %>
