@@ -58,7 +58,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit.json                                HTML AND AJAX
   #-------------------------------------------------------------------
   def edit
-  	 @user = User.find(params[:id])
+  	@user = User.find(params[:id])
 
     respond_to do |format|
       format.json { render :json => @user }   
@@ -207,9 +207,9 @@ def needs_password?(user, params)
   params[:password].present?
 end
 
-def update_without_password(user_params)
-  user.update_without_password(user_params)
-end
+# def update_without_password(user_params)
+#   user.update_without_password(user_params)
+# end
 
 
 
