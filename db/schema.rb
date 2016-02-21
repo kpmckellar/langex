@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160215200524) do
+ActiveRecord::Schema.define(version: 20160221222831) do
 
   create_table "languages", force: :cascade do |t|
     t.string   "language"
