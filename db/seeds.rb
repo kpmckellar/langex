@@ -13,5 +13,5 @@ Role.create(name: "admin")
 Role.create(name: "user")
 
 
-User.create(first_name: "God", last_name: "Dog", email: "god@gmail.com", location: "NYC", nationality: "American", bio: "Hello", password: "password", admin: true, approved: true, role_id: 1)
+User.create(first_name: "God", last_name: "Dog", email: "god@gmail.com", location: "NYC", nationality: "American", bio: "Hello", password: "password", avatar: "/assets/images/profile/beyonce.jpeg" admin: true, approved: true, role_id: 1)
 

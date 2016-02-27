@@ -15,13 +15,18 @@ class UsersController < ApplicationController
   end
 
  def index
- 	 #@users = User.all
-	 @users = User.accessible_by(current_ability, :index).limit(20)
-	 respond_to do |format|
+   @waitlist_users = User.where(approved: [false, nil])
+   
+   @users = User.accessible_by(current_ability, :index).limit(20)
+   respond_to do |format|
 		format.json { render :json => @users }
 		format.xml  { render :xml => @users }
 	    format.html
-	end
+	 end
+
+   
+   
+
  end
 	
   # GET /users/new
@@ -214,7 +219,7 @@ end
 
 
 def user_params
-   		params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :name, :role_id, :accepted)
+   		params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :name, :role_id, :approved)
 end
 
 # end
