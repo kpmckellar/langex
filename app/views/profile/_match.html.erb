@@ -5,23 +5,25 @@
 
 	<% @fluent_languages.each do |proficiency| %>
 				<% if current_user != @nonproficient_users %>
-					<% @nonproficient_users = User.seeking_proficiency_in(proficiency.language.id) %>
-						<% @nonproficient_users.each do |nonprof_user| %>
+					<% @nonproficient_users = User.seeking_proficiency_in(proficiency.language.id) rescue nil%>
+						<% if @nonproficient_users != nil %>
+							<% @nonproficient_users.each do |nonprof_user|  %>
+						
 
 	<% @nonfluent_languages.each do |nonproficiency| %>
 	<% @proficient_users = User.proficient_in(nonproficiency.language.id) %>
 
 				<% if @proficient_users.any? %>
-				<% @proficient_users.each do |user| %>
-					<% if nonprof_user == user %>
-						<% if nonprof_user != current_user %>
-							<div class="profile-holder">
-							
-							<%= render partial: 'user', object: nonprof_user  %>
-						</div>
-						<% end %>
+					<% @proficient_users.each do |user| %>
+						<% if nonprof_user == user %>
+							<% if nonprof_user != current_user %>
+								<div class="profile-holder">
+									<%= render partial: 'user', object: nonprof_user  %>
+								</div>
+							<% end %>
 						<% end %>
 					<% end %>
+				<% end %>
 				<% end %>
 				<% end %>
 				<% end %>

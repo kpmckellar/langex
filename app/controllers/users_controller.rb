@@ -16,6 +16,10 @@ class UsersController < ApplicationController
 
  def index
  	 #@users = User.all
+   # @fluent_languages = LanguagesUser.
+   # @fluent_languages = LanguagesUser.where(user: user.id).where("level > 4")
+   # @nonfluent_languages = LanguagesUser.where("level < 5").where(user: current_user.id)
+
 	 @users = User.accessible_by(current_ability, :index).limit(20)
 	 respond_to do |format|
 		format.json { render :json => @users }
@@ -49,8 +53,8 @@ class UsersController < ApplicationController
       format.html      
     end
  
-  rescue ActiveRecord::RecordNotFound
-    respond_to_not_found(:json, :xml, :html)
+    # rescue ActiveRecord::RecordNotFound
+    #   respond_to_not_found(:json, :xml, :html)
   end
 
   # GET /users/1/edit                                                      
@@ -66,10 +70,47 @@ class UsersController < ApplicationController
       format.html
     end
  
-  rescue ActiveRecord::RecordNotFound
-    respond_to_not_found(:json, :xml, :html)
+    rescue ActiveRecord::RecordNotFound
+      respond_to_not_found(:json, :xml, :html)
   end
  
+  def edit_all
+    @users = User.all
+  end
+
+  def update
+
+    @user = User.find(params[:id])
+    if user_params[:password].blank?
+      user_params.delete(:password)
+      user_params.delete(:password_confirmation)
+    end
+
+
+    successfully_updated = if needs_password?(@user, user_params)
+                           @user.update(user_params)
+                         else
+                           @user.update_without_password(user_params)
+                         end
+
+    respond_to do |format|
+      if successfully_updated
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+     
+    end
+   end
+
+  # rescue ActiveRecord::RecordNotFound
+  #   respond_to_not_found(:js, :xml, :html)
+ 
+
+  
+
   # DELETE /users/1     
   # DELETE /users/1.xml
   # DELETE /users/1.json                                  HTML AND AJAX
@@ -83,65 +124,58 @@ class UsersController < ApplicationController
       format.html { respond_to_destroy(:html) }      
     end
  
-  rescue ActiveRecord::RecordNotFound
-    respond_to_not_found(:json, :xml, :html)
+    rescue ActiveRecord::RecordNotFound
+      respond_to_not_found(:json, :xml, :html)
+    
   end
 
-   # PUT /users/1
-  # PUT /users/1.xml
-  # PUT /users/1.json                                            HTML AND AJAX
-  #----------------------------------------------------------------------------
+
+  
+
+
   # def update
-  #   if params[:user][:password].blank?
-  #     [:password,:password_confirmation,:current_password].collect{|p| params[:user].delete(p) }
+
+  # @user = User.find(params[:id])
+  # if user_params[:password].blank?
+  #   user_params.delete(:password)
+  #   user_params.delete(:password_confirmation)
+  # end
+
+
+  # successfully_updated = if needs_password?(@user, user_params)
+  #                          @user.update(user_params)
+  #                        else
+  #                          @user.update_without_password(user_params)
+  #                        end
+
+  # respond_to do |format|
+  #   if successfully_updated
+  #     format.html { redirect_to @user, notice: 'User was successfully updated.' }
+  #     format.json { head :no_content }
   #   else
-  #     @user.errors[:base] << "The password you entered is incorrect" unless @user.valid_password?(params[:user][:current_password])
+  #     format.html { render action: 'edit' }
+  #     format.json { render json: @user.errors, status: :unprocessable_entity }
   #   end
+  # end
+
+
+  # rescue ActiveRecord::RecordNotFound
+  #   respond_to_not_found(:js, :xml, :html)
+  # end
+
+  # def update_all
+  #   User.where(:id => params[:ids]).update_all(params[:user])
+  #   redirect_to(users_path)
+  # end
  
-  #   respond_to do |format|
-  #     if @user.errors[:base].empty? and @user.update_attributes(params[:user])
-  #       flash[:notice] = "Your account has been updated"
-  #       format.json { render :json => @user.to_json, :status => 200 }
-  #       format.xml  { head :ok }
-  #       format.html { render :action => :edit }
-  #     else
-  #       format.json { render :text => "Could not update user", :status => :unprocessable_entity } #placeholder
-  #       format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
-  #       format.html { render :action => :edit, :status => :unprocessable_entity }
-  #     end
-  #   end
- 
-  # 
-  def update
-
-  @user = User.find(params[:id])
-  if user_params[:password].blank?
-    user_params.delete(:password)
-    user_params.delete(:password_confirmation)
-  end
-
-
-  successfully_updated = if needs_password?(@user, user_params)
-                           @user.update(user_params)
-                         else
-                           @user.update_without_password(user_params)
-                         end
-
-  respond_to do |format|
-    if successfully_updated
-      format.html { redirect_to @user, notice: 'User was successfully updated.' }
-      format.json { head :no_content }
-    else
-      format.html { render action: 'edit' }
-      format.json { render json: @user.errors, status: :unprocessable_entity }
+  def update_all
+    params["user"].keys.each do |id|
+      @user = User.find(id.to_i)
+      @user.update_attributes(bulk_user_params(id))
     end
+    redirect_to(users_path)
   end
 
-
-  rescue ActiveRecord::RecordNotFound
-    respond_to_not_found(:js, :xml, :html)
-  end
- 
   # POST /users
   # POST /users.xml         
   # POST /users.json                                      HTML AND AJAX
@@ -164,7 +198,7 @@ class UsersController < ApplicationController
     end
   end
  
-end
+# end
  
 
 
@@ -211,10 +245,12 @@ end
 #   user.update_without_password(user_params)
 # end
 
-
-
-def user_params
-   		params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :name, :role_id, :accepted)
+ def bulk_user_params(id)
+  params.require(:user).fetch(id).permit( :first_name, :last_name, :email, :password, :password_confirmation, :role_id, :approved, :bio )
 end
 
-# end
+def user_params
+   		params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role_id, :approved)
+end
+
+end

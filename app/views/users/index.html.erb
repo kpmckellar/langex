@@ -1,25 +1,37 @@
 <h1>Manage Usersss</h1>
 
+<%= link_to "Approve Users", edit_all_path, class: "btn btn-default btn-lg active" %>
+
 <table>
+    <th><h3>User</h3></th>
+    <th><h3>Approved?</h3></th>
+    <th><h3>Role</h3></th>
     <% @users.each do |user| %>
         <tr>
+            <td><%= user.first_name %></td>
             <td><%= user.email %></td>
             <td><%= user.approved? %></td>
             <td><%= user.role.name rescue nil %></td>
-            <td><%#= link_to "Edit", edit_user_path(user) %></td>
+            <% user.languages.each do |language| %>
+                <%# if language.level %>
+                <td><%= language.language %></td>
+                <td><%#= language %></td>
+            <% end %>
+            <%# end %>
+                <td><%#= link_to "Edit", edit_user_path(user) %></td>
         </tr>
     <% end %>
 </table>
 <!-- 
-<% @users.each do |user| %>
+<%# @users.each do |user| %>
   <tr>
-    <td><%= user.first_name %></td>
-    <td><%= user.last_name %></td>
-    <td><%= user.admin %></td>
+    <td><%#= user.first_name %></td>
+    <td><%#= user.last_name %></td>
+    <td><%#= user.admin %></td>
     <td><%#= link_to "Admin?", user_admin_path(user), method: :post if can? :manage, user %></td>
     <td><%#= link_to 'Edit', edit_user_path(user) %></td>
   </tr>
-<% end %> -->
+<%# end %> -->
 
 <br><br>
 <!-- table header stuff here -->
@@ -34,4 +46,38 @@
     <td><%= link_to_if(can?(:delete, u), image_tag("/images/delete_icon.gif"), u, :confirm => "Are you sure?", :method => :delete) {} %></td>
   </tr>
 <% end %>
-</table>
+
+<br><br>
+
+
+<%= form_for :user, :url => update_all_path, :html => { :method => :put } do %>
+  <table>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>E-Mail</th>
+    </tr>
+    <% @users.each do |user| %>
+      <%= fields_for "user[]", user do |user_fields| %>
+    <tr>
+      <td><%= user_fields.text_field :first_name %></td>
+      <td><%= user_fields.text_field :last_name %></td>
+      <td><%= user_fields.email_field :email %></td>
+      <td><%= user_fields.check_box :approved %></td>
+    </tr>
+      <% end %>
+    <% end %>
+  </table>
+
+  <div class="actions">
+    <%= submit_tag %>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+

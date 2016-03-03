@@ -5,7 +5,10 @@
 	<div class"wrapper">
 
 		<div class="profile-picture" >
-			<%= image_tag(current_user.avatar.url(:thumb), :width => 200, :height => 300, :crop => :fill, :class=>"img-rounded" ) rescue nil  %>
+			<%#= link_to image_tag(user.avatar.url(:thumb)), "/profile/#{user.id}/view" %>
+			<%= link_to image_tag(current_user.avatar.url(:thumb)), "/profile/#{current_user.id}/view" rescue nil  %>
+
+			<%#= image_tag(current_user.avatar.url(:thumb), :width => 200, :height => 300, :crop => :fill, :class=>"img-rounded" ) rescue nil  %>
 			</div>
 		
 		<div class="profile-nav" >

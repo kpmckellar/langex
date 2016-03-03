@@ -1,6 +1,9 @@
 class ProfileController < ApplicationController
 	before_action :authenticate_user!
 
+	before_filter :approval_required
+
+
 	def home
 		@fluent_languages = LanguagesUser.where(user: current_user.id).where("level > 4")
   		@nonfluent_languages = LanguagesUser.where("level < 5").where(user: current_user.id)
@@ -44,7 +47,13 @@ class ProfileController < ApplicationController
 		@fluent_languages = LanguagesUser.where(user: @user).where("level > 4")
   		@nonfluent_languages = LanguagesUser.where("level < 5").where(user: @user)
 	end
+	private
 
+	def approval_required
+    if current_user.approved != true
+      #redirect_to languages_user_new_path
+    end
+  end
 	
 
 end

@@ -4,6 +4,8 @@ class LanguagesUsersController < ApplicationController
 
 	def index
 		@languages_user = LanguagesUser.all
+		#@languages = Languages.all.uniq
+
 	end
 
 
@@ -17,8 +19,15 @@ class LanguagesUsersController < ApplicationController
 
 	def new
 
+
+
 		@languages_user = LanguagesUser.new
 		#@user = current_user	
+
+
+		@fluent_languages = LanguagesUser.where(user: current_user.id).where("level > 4")
+  		@nonfluent_languages = LanguagesUser.where("level < 5").where(user: current_user.id)
+  		#@fluent_lang = LanguagesUser.where("level > 4")
 		
 	end
 
@@ -30,19 +39,20 @@ class LanguagesUsersController < ApplicationController
 		#@langauges_user.user_id = current_user.id if current_user
 		#@user = current_user
 		#languages_user_params.merge!(user_id: current_user)
-			@languages_user = LanguagesUser.new(languages_user_params)
-			@languages_user.user_id = current_user.id
-  
-		    respond_to do |format|
-		      if @languages_user.save
-		        format.html { redirect_to home_path, notice: 'Proficiency was successfully created.' }
-		        format.json { render :show, status: :created, location: @languages_user }
-		      else
-		        format.html { render :new }
-		        format.json { render json: @languages_user.errors, status: :unprocessable_entity }
-		      end
-		    end
-
+			
+				@languages_user = LanguagesUser.new(languages_user_params)
+				@languages_user.user_id = current_user.id
+	  		
+			    respond_to do |format|
+			      if @languages_user.save
+			        format.html { redirect_to home_path, notice: 'Proficiency was successfully created.' }
+			        format.json { render :show, status: :created, location: @languages_user }
+			      else
+			        format.html { render :new }
+			        format.json { render json: @languages_user.errors, status: :unprocessable_entity }
+			      end
+			    
+			end
 		else
 			puts 'You must be logged in'
 			redirect_to new_languages_user_path
