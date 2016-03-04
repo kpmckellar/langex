@@ -17,6 +17,10 @@
 			<td><%= @user.email %></td>
 		</tr>
 		<tr>
+			<td class="oce-first">Approved:</td>
+			<td><%= @user.approved rescue nil %></td>
+		</tr>
+		<tr>
 			<td class="oce-first">Role:</td>
 			<td><%= @user.role.name rescue nil %></td>
 		</tr>

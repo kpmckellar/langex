@@ -4,14 +4,22 @@
 	<p>Fluent in:
 		<% user.languages_users.each do |language| %>
 			<% if language.level > 4 %>
+<<<<<<< HEAD
 				<%= language.language %>
+=======
+				<%#= language.language.language %>
+>>>>>>> waitlist
 			<% end %>
 		<% end %>
 	</p>
 	<p>Currently learning:
 		<% user.languages_users.each do |language| %>
 			<% if language.level < 5 %>
+<<<<<<< HEAD
 				<%= language.language %>
+=======
+				<%#= language.language.language %>
+>>>>>>> waitlist
 			<% end %>
 		<% end %>
 	</p>

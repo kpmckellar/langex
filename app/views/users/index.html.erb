@@ -1,3 +1,11 @@
+<html>
+<head>
+    <title>God View</title>
+</head>
+<body>
+
+
+
 <h1>Manage Usersss</h1>
 
 <%= link_to "Approve Users", edit_all_path, class: "btn btn-default btn-lg active" %>
@@ -36,6 +44,7 @@
 <br><br>
 <!-- table header stuff here -->
 <table>
+<<<<<<< HEAD
 <% @users.each do |u| %>
   <tr>
     <td><%= link_to_if(can?(:read, User), "#{u.first_name}", user_path(u.id)) {} %></td>
@@ -81,3 +90,26 @@
 
 
 
+=======
+    <% @users.each do |u| %>
+      <tr>
+        <td><%= link_to_if(can?(:read, User), "#{u.first_name}", user_path(u.id)) {} %></td>
+        <td><%= "#{u.email}" %></td>
+        <td><%= "#{u.role.name}" rescue nil %></td>
+        <td><%= "#{u.approved}" rescue nil %></td>
+
+        <td><%#= "#{u.roles.collect{|r| r.first_name}}" %></td>
+        <td><%= link_to_if(can?(:edit, User), "Edit", edit_user_path(u.id)) {} %></td>
+        <td><%= link_to_if(can?(:delete, u), image_tag("/images/delete_icon.gif"), u, :confirm => "Are you sure?", :method => :delete) {} %></td>
+      </tr>
+    <% end %>
+</table>
+
+    <div>
+        <%= render partial: 'waitlist' %>
+
+    </div>
+
+</body>
+</html>
+>>>>>>> waitlist

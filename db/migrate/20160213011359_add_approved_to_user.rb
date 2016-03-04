@@ -13,3 +13,5 @@ class AddApprovedToUser < ActiveRecord::Migration
     remove_column :users, :approved
   end
 end
+
+

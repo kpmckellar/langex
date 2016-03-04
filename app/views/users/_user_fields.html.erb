@@ -11,12 +11,15 @@
   <!-- <p><%#= f.label :role %></p>
   <ul class="no-pad no-bullets">
   	<%#= check_box_tag(:roles) %>
-  	<%= label_tag(:role, :role) %> -->
+  	<%#= label_tag(:role, :role) %> -->
 <!--   	<div class="form-group"> -->
     <%#= f.text_field :role_id %>
     <%= collection_select(:user, :role_id, Role.all, :id, :name, {prompt: true}) %>
+    
 <!--   </div> -->
 
     <%#= checkboxes(@user, :role_ids, @accessible_roles, :name) %>
 
 <% end %>
+<%= f.label :approved %>
+ <%= f.check_box :approved %>
