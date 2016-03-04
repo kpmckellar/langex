@@ -1,0 +1,7 @@
+<%= form_for @languages_user do |f| %>
+	<div class="fields">
+		<%= f.collection_select(:language_id, Language.order('language ASC').all, :id, :language) %><br>
+		<%= f.hidden_field :level, value: 5 %>
+		<%= f.submit "Save Native Language" %>
+	</div>
+<% end %>

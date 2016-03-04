@@ -1,5 +1,5 @@
 class LanguagesUsersController < ApplicationController
-
+	before_action :authenticate_user!
 	before_action :set_languages_user, only: [:show, :edit, :update, :destroy]
 
 	def index
@@ -16,10 +16,11 @@ class LanguagesUsersController < ApplicationController
 	end
 
 	def new
-
+		@users = LanguagesUser.where(:user_id => current_user.id).count
+		@user_count = @users
+		
 		@languages_user = LanguagesUser.new
 		#@user = current_user	
-		
 	end
 
 	def edit
@@ -35,7 +36,7 @@ class LanguagesUsersController < ApplicationController
   
 		    respond_to do |format|
 		      if @languages_user.save
-		        format.html { redirect_to home_path, notice: 'Proficiency was successfully created.' }
+		        format.html { redirect_to new_languages_user_path, notice: 'Proficiency was successfully created.' }
 		        format.json { render :show, status: :created, location: @languages_user }
 		      else
 		        format.html { render :new }

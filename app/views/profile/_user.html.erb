@@ -4,14 +4,14 @@
 	<p>Fluent in:
 		<% user.languages_users.each do |language| %>
 			<% if language.level > 4 %>
-				<%= language.language.language %>
+				<%#= language.language.language %>
 			<% end %>
 		<% end %>
 	</p>
 	<p>Currently learning:
 		<% user.languages_users.each do |language| %>
 			<% if language.level < 5 %>
-				<%= language.language.language %>
+				<%#= language.language.language %>
 			<% end %>
 		<% end %>
 	</p>

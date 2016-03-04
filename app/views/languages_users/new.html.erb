@@ -1,5 +1,34 @@
 <h1>Tell us about your language journey!</h1>
 
-<%= render 'form' %>
+<% if @user_count == 0 %>
+	<h1>What is your native language?</h1>
+			<%= render 'native_form' %>
+			<%= @user_count %>
+	<!-- <h1>0</h1> -->
+<% elsif @user_count == 1 %>
+	<h1>What language are you learning?</h1>
+		<%= render 'learning_form' %>	
+<% elsif @user_count == 2 %>
+	<h1>You must get to X level to add another language.</h1>
+<% elsif @user_count > 3 %>
+	<h1>2 languages</h1>
+<% else %>
+	<h1><%= @user_count %></h1>
+<% end %>
+
+<h1><%= @users %></h1>
+<%#= form_for @languages_user.each do |f| %>
+	<%#= f.fields_for @languages_user do |tf| %>
+		<%#= render 'native_form', locals: { form: f } %>
+	<%# end %>
+
+	<%#= f.fields_for @languages_user.each do |tf| %>
+		<%#= render 'learning_form', locals: { form: tf } %>
+	<%# end %>
+<!-- <div class="actions"> -->
+    <%#= f.submit "Save Languages" %>
+ <%# end %>
+<!-- </div> -->
+
 
 <%#= link_to 'Back', movies_path %>
