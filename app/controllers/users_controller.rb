@@ -15,20 +15,15 @@ class UsersController < ApplicationController
   end
 
  def index
-<<<<<<< HEAD
- 	 #@users = User.all
-   # @fluent_languages = LanguagesUser.
-   # @fluent_languages = LanguagesUser.where(user: user.id).where("level > 4")
-   # @nonfluent_languages = LanguagesUser.where("level < 5").where(user: current_user.id)
-
-	 @users = User.accessible_by(current_ability, :index).limit(20)
-	 respond_to do |format|
-=======
+# <<<<<<< HEAD
+# 	 @users = User.accessible_by(current_ability, :index).limit(20)
+# 	 respond_to do |format|
+# =======
    @waitlist_users = User.where(approved: [false, nil])
    
    @users = User.accessible_by(current_ability, :index).limit(20)
    respond_to do |format|
->>>>>>> waitlist
+# >>>>>>> waitlist
 		format.json { render :json => @users }
 		format.xml  { render :xml => @users }
 	    format.html
@@ -261,11 +256,11 @@ end
 end
 
 def user_params
-<<<<<<< HEAD
+# <<<<<<< HEAD
    		params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role_id, :approved)
-=======
-   		params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :name, :role_id, :approved)
->>>>>>> waitlist
+# =======
+#    		params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :name, :role_id, :approved)
+# >>>>>>> waitlist
 end
 
 end
