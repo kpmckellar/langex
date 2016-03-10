@@ -43,7 +43,7 @@ class LanguagesUsersController < ApplicationController
 	end
 
 	def create
-		if user_signed_in?
+		# if user_signed_in?
 		#@langauges_user.user_id = current_user.id if current_user
 		#@user = current_user
 		#languages_user_params.merge!(user_id: current_user)
@@ -77,10 +77,10 @@ class LanguagesUsersController < ApplicationController
 		    end
 
 # >>>>>>> waitlist
-		else
-			puts 'You must be logged in'
-			redirect_to new_languages_user_path
-		end
+		# else
+		# 	puts 'You must be logged in'
+		# 	redirect_to new_languages_user_path
+		# end
 	  end
 	  
 	def update
