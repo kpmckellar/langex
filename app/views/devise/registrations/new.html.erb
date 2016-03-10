@@ -41,6 +41,20 @@
             <%= f.file_field :avatar %>
         </div>
   </div>
+
+
+  
+    <%# lu.fields_for :langauges_user do |lu| %>
+
+    <%= f.fields_for :langauges_user do |lu| %>
+      <%#= lu.text_field :language_id %>
+      <div class="fields">
+      <%= lu.collection_select(:language_id, Language.order('language ASC').all, :id, :language) %><br>
+      <%= lu.hidden_field languages_user[level], value: 1 %>
+    <% end %>
+
+  </div>
+
   <br>
   <div class="field">
     <%= f.label :password %>

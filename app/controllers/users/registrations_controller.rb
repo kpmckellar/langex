@@ -3,14 +3,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    # @user = User.new
+    # build_resource({})
+    #  self.resource = LanguagesUser.new[sign_up_params]
+    # respond_with self.resource
+  end
+    #2.times { user.languages_users.build} 
 
+    
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    # @user_id = current_user.id
+    super
+  end
 
   # GET /resource/edit
   # def edit
@@ -37,6 +43,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # protected
+  private
+
+  # def sign_up_params(:user)
+  #   #allow = [:email, :password, :password_confirmation, [languages_user_attributes: [:language_id, :user_id, :level]]]
+  #   # params.require(resource_name).permit(allow)
+  #   params.require(:user).permit(:email, :password, :password_confirmation, [languages_user_attributes: [:language_id, :user_id, :level]])
+
+  # end
+
+  # def languages_user_params
+  #     params.require(:languages_user).permit(:language_id, :level, :user_id)
+  # end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

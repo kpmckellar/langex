@@ -18,19 +18,14 @@ class LanguagesUsersController < ApplicationController
 	def new
 		@users = LanguagesUser.where(:user_id => current_user.id).count
 		@user_count = @users
-		
 		@languages_user = LanguagesUser.new
-		#@user = current_user	
 	end
 
 	def edit
 	end
 
 	def create
-		if user_signed_in?
-		#@langauges_user.user_id = current_user.id if current_user
-		#@user = current_user
-		#languages_user_params.merge!(user_id: current_user)
+		# if user_signed_in?
 			@languages_user = LanguagesUser.new(languages_user_params)
 			@languages_user.user_id = current_user.id
   
@@ -44,10 +39,10 @@ class LanguagesUsersController < ApplicationController
 		      end
 		    end
 
-		else
-			puts 'You must be logged in'
-			redirect_to new_languages_user_path
-		end
+		# else
+		# 	puts 'You must be logged in'
+		# 	redirect_to new_languages_user_path
+		# end
 	  end
 	  
 	def update
@@ -73,8 +68,7 @@ class LanguagesUsersController < ApplicationController
 
 
 
-	 private
-    # Never trust parameters from the scary internet, only allow the white list through.
+	private
     def set_languages_user
       @languages_user = LanguagesUser.find(params[:id])
     end

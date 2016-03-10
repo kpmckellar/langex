@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	before_filter :authenticate_user!
+
   #validates :password, :password_confirmation, presence: true, on: :create
 
 # Get roles accessible by the current user
@@ -34,6 +35,8 @@ class UsersController < ApplicationController
   # GET /users/new.json                                    HTML AND AJAX
   #-------------------------------------------------------------------
   def new
+
+
     respond_to do |format|
       format.json { render :json => @user }   
       format.xml  { render :xml => @user }
