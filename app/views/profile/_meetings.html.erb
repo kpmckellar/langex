@@ -15,32 +15,24 @@
           <button class="btn-profile"><%= link_to "Get Points!", topics_path %></button>
         <p>
     </div> 
-
-
-
-
 <% end %>
-
-
-
-
-
-
-
-
-
-
 
 <% @meetings.each do |meeting| %>
 <div class="user-profile">
-  <%= @meeting_user.first_name %>
+  <%#= @meeting_user.first_name %>
   <%= meeting.requestee.first_name %>
+  <%= meeting.requestor.first_name %>
   <p> Meeting:
     <%= meeting.meeting_time %>
   </p>
 
-  
-  <%= image_tag(@meeting_user.avatar.url(:thumb)) %>
+    <% if current_user == meeting.requestor %>
+      <%= image_tag(meeting.requestee.avatar.url(:thumb)) %>
+    <% else %>
+      <%= image_tag(meeting.requestor.avatar.url(:thumb)) %>
+    <% end %>
+
+  <%#= image_tag(@meeting_user.avatar.url(:thumb)) %>
   <p>
     <% if meeting.accepted == false %>
       <% if current_user == meeting.requestee %>
