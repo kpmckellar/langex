@@ -13,8 +13,8 @@
 	<p>Currently learning:
 		<% user.languages_users.each do |language| %>
 			<% if language.level < 5 %>
-
 				<%= language.language.language rescue nil %>
+
 
 			<% end %>
 		<% end %>

@@ -4,15 +4,22 @@ class MeetingsController < ApplicationController
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
 
   def index
-    @meetings = Meeting.all
+    @all_meetings = Meeting.all
     @requestee = User.where(params[:requestee_id])
     @requestor = User.where(params[:requestor_id])
-   # @pending_meetings = Meeting.where('accepted = ?', false).includes(:requestor_id)
- 
-    
-    #@pending_meetings.each do |pending_meeting|
-     # @requestor = User.where('id = ?', pending_meeting.requestor_id)
-   # end
+
+
+    @meetings = Meeting.where('meeting_time >= ? AND (requestor_id= ? OR requestee_id= ?)', Date.today, current_user,  current_user).limit(3).order('meeting_time asc')
+
+    @past_meetings = Meeting.where('meeting_time <= ? AND (requestor_id= ? OR requestee_id= ?)', Date.today, current_user,  current_user).limit(3).order('meeting_time asc')
+
+    @meetings.each do |meeting|
+        if meeting.requestor_id == current_user.id
+          @meeting_user = User.find(meeting.requestee_id)
+        else
+          @meeting_user = User.find(meeting.requestor_id)
+        end
+    end
 
   end
 

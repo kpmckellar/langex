@@ -4,32 +4,24 @@
 <h2>Hello <%= current_user.first_name %>. Here are your upcoming meetings.</h2>
 
 
-<% @past_meetings.each do |past_meeting| %>
-    <div class="user-profile">
-        <h2><%= @meeting_user.first_name %></h2>
-        <p> Meeting:
-          <%= past_meeting.meeting_time %>
-        </p>
-        <%= image_tag(@meeting_user.avatar.url(:thumb)) %>
-        <p>
-          <button class="btn-profile"><%= link_to "Get Points!", topics_path %></button>
-        <p>
-    </div> 
-<% end %>
+
 
 <% @meetings.each do |meeting| %>
 <div class="user-profile">
   <%#= @meeting_user.first_name %>
-  <%= meeting.requestee.first_name %>
-  <%= meeting.requestor.first_name %>
+  
+  
   <p> Meeting:
     <%= meeting.meeting_time %>
   </p>
 
     <% if current_user == meeting.requestor %>
+      <%= meeting.requestee.first_name %>
       <%= image_tag(meeting.requestee.avatar.url(:thumb)) %>
     <% else %>
+      <%= meeting.requestor.first_name %>
       <%= image_tag(meeting.requestor.avatar.url(:thumb)) %>
+
     <% end %>
 
   <%#= image_tag(@meeting_user.avatar.url(:thumb)) %>

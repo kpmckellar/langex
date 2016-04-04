@@ -22,7 +22,7 @@
 		<h5 class="text-right"><%= @user.location %></h5>
 		<h6>Fluent in:</h6>
 			<% @fluent_languages.each do |proficiency| %>
-				<p><%= proficiency.language.language %></p>
+				<p><%= proficiency.language.language rescue nil %></p>
 			<% end %>
 		<h6><%= @user.first_name %> is learning:</h6>
 			<% @nonfluent_languages.each do |proficiency| %>

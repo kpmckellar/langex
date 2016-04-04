@@ -1,0 +1,18 @@
+<% @past_meetings.each do |past_meeting| %>
+    <div class="user-profile">
+         <p> Meeting:
+            <%= past_meeting.meeting_time %>
+         </p>
+
+            <% if current_user == past_meeting.requestor %>
+              <%= past_meeting.requestee.first_name %>
+              <%= image_tag(past_meeting.requestee.avatar.url(:thumb)) %>
+            <% else %>
+              <%= past_meeting.requestor.first_name %>
+              <%= image_tag(past_meeting.requestor.avatar.url(:thumb)) %>
+
+            <% end %> 
+          <button class="btn-profile"><%= link_to "Get Points!", topics_path %></button>
+        <p>
+    </div> 
+<% end %>

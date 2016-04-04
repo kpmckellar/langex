@@ -1,0 +1,30 @@
+<h1>Listing All Meetings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Requestor</th>
+      <th>Requestee</th>
+      <th>Meeting time</th>
+      <th>Accepted</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @meetings.each do |meeting| %>
+      <tr>
+        <td><%= meeting.requestor.first_name %></td>
+        <td><%= meeting.requestee.first_name %></td>
+        <td><%= meeting.meeting_time %></td>
+        <td><%= meeting.accepted %></td>
+        <td><%#= link_to 'Show', meeting %></td>
+        <td><%#= link_to 'Edit', edit_meeting_path(meeting) %></td>
+        <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <%# end %>
+  </tbody>
+</table>
+
+<br>
