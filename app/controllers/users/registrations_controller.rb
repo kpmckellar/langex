@@ -5,16 +5,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     # @user = User.new
-    # build_resource({})
-    #  self.resource = LanguagesUser.new[sign_up_params]
-    # respond_with self.resource
+     build_resource({})
+      resource.languages_users.build
+     respond_with self.resource
   end
     #2.times { user.languages_users.build} 
 
     
   # POST /resource
   def create
-    # @user_id = current_user.id
     super
   end
 
@@ -43,8 +42,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # protected
-  private
 
+
+
+  protected
+
+      def configure_permitted_parameters
+
+      devise_parameter_sanitizer.for(:sign_up) { |u|
+        u.permit(:email, :password, :password_confirmation, :bio, :location, :last_name, :first_name, :nationality, :avatar, languages_users_attributes: [:language_id, :level]) }
+      end
+  
   # def sign_up_params(:user)
   #   #allow = [:email, :password, :password_confirmation, [languages_user_attributes: [:language_id, :user_id, :level]]]
   #   # params.require(resource_name).permit(allow)

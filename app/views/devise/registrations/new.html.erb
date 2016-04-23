@@ -45,15 +45,17 @@
 
   
     <%# lu.fields_for :langauges_user do |lu| %>
+  <% resource.languages_users.each do |languages_user| %>
 
-    <%= f.fields_for :langauges_user do |lu| %>
+    <%= f.fields_for :languages_user do |lu| %>
       <%#= lu.text_field :language_id %>
       <div class="fields">
       <%= lu.collection_select(:language_id, Language.order('language ASC').all, :id, :language) %><br>
-      <%= lu.hidden_field languages_user[level], value: 1 %>
+      <%= lu.hidden_field :level, value: 1 %>
+      </div>
     <% end %>
-
-  </div>
+  <% end %>
+  
 
   <br>
   <div class="field">
