@@ -14,8 +14,7 @@
  *= require_self
  */
 
-@import "bootstrap";
-@import "bootstrap-sprockets";
+
 
 header {
 	background-color: #eee;
@@ -46,14 +45,6 @@ body 	{
 
 .profile-container	{
 	clear: both;
-}
-
-.alert-notice {
-  @extend .alert-success;
-}
- 
-.alert-alert {
-  @extend .alert-warning;
 }
 
 
