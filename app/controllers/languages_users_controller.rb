@@ -1,5 +1,5 @@
 class LanguagesUsersController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, except: [:new]
 	before_action :set_languages_user, only: [:show, :edit, :update, :destroy]
 
 	def index

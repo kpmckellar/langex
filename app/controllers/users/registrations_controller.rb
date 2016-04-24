@@ -3,19 +3,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
+  # def new
     # @user = User.new
-     build_resource({})
-      resource.languages_users.build
-     respond_with self.resource
-  end
+     # build_resource({})
+     #  resource.languages_users.build
+     # respond_with self.resource
+  # end
     #2.times { user.languages_users.build} 
 
     
   # POST /resource
-  def create
-    super
-  end
+  # def create
+  #   super
+  # end
 
   # GET /resource/edit
   # def edit
@@ -47,11 +47,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-      def configure_permitted_parameters
+      # def configure_permitted_parameters
 
-      devise_parameter_sanitizer.for(:sign_up) { |u|
-        u.permit(:email, :password, :password_confirmation, :bio, :location, :last_name, :first_name, :nationality, :avatar, languages_users_attributes: [:language_id, :level]) }
-      end
+      # devise_parameter_sanitizer.for(:sign_up) { |u|
+      #   u.permit(:email, :password, :password_confirmation, :bio, :location, :last_name, :first_name, :nationality, :avatar, languages_users_attributes: [:language_id, :level]) }
+      # end
   
   # def sign_up_params(:user)
   #   #allow = [:email, :password, :password_confirmation, [languages_user_attributes: [:language_id, :user_id, :level]]]

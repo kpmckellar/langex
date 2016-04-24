@@ -41,6 +41,16 @@
             <%= f.file_field :avatar %>
         </div>
   </div>
+  <br>
+  <div class="form-group">
+    <p>What is your native language?</p>
+    <%= f.collection_select(:native_language, Language.order('language ASC').all, :language, :language) %><br>
+  </div>
+
+    <div class="form-group">
+      <p>What language are you currently learning? (HINT: You can add more languages later, but this should be the top language you are learning)</p>
+    <%= f.collection_select(:learning_language, Language.order('language ASC').all, :language, :language) %><br>
+  </div>
 
 
   

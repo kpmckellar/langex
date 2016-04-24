@@ -25,6 +25,9 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:sign_up) << :bio
       devise_parameter_sanitizer.for(:sign_up) << :avatar
       devise_parameter_sanitizer.for(:sign_up) << :role_id
+      devise_parameter_sanitizer.for(:sign_up) << :native_language
+      devise_parameter_sanitizer.for(:sign_up) << :learning_language
+
       devise_parameter_sanitizer.for(:account_update) << :avatar
       devise_parameter_sanitizer.for(:account_update) << :first_name
       devise_parameter_sanitizer.for(:account_update) << :bio
