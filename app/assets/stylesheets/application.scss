@@ -14,8 +14,13 @@
  *= require_self
  */
 
-@import "bootstrap";
-@import "bootstrap-sprockets";
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+.form_container	{
+	width: 30em;
+	margin: auto;
+}
 
 header {
 	background-color: #eee;
@@ -36,8 +41,7 @@ body 	{
 
 
 .wrapper	{
-	width: 960px;
-	margin: 0 auto;
+
 }
 
 .clear	{
@@ -46,14 +50,6 @@ body 	{
 
 .profile-container	{
 	clear: both;
-}
-
-.alert-notice {
-  @extend .alert-success;
-}
- 
-.alert-alert {
-  @extend .alert-warning;
 }
 
 
