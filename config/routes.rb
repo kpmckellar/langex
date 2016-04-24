@@ -31,7 +31,9 @@ Rails.application.routes.draw do
     end
   end
     
-  devise_for :users
+  
+  devise_for :users, controllers: { registrations: "users/registrations" }
+  resources :users
   # resources :users do
   #   post :admin #-> url.com/users/:user_id/admin
   # end
@@ -40,10 +42,13 @@ Rails.application.routes.draw do
   
 
   # scope "/admin" do
+
   match 'users/all/edit' => 'users#edit_all', :as => :edit_all, :via => :get
   match 'users/all' => 'users#update_all', :as => :update_all, :via => :put
 
     resources :users
+
+
   # end
  
   
