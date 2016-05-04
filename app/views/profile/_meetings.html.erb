@@ -1,81 +1,49 @@
 
 
 <%#= link_to 'New Meeting', new_meeting_path %>
-<h2>Hello <%= current_user.first_name %>. Here are your upcoming meetings.</h2>
+<h2>Hello <%= current_user.first_name %>. Here are your upcoming meetings.</h2> 
 
+  <div class="user-profile">
+    <% if @meetings.nil? %>
+      <h2>No meetings</h2>
 
-<<<<<<< HEAD
-
-=======
-<% @past_meetings.each do |past_meeting| %>
-    <div class="user-profile">
-        <h2><%= @meeting_user.first_name %></h2>
+    <% else%>
+      <% @meetings.each do |meeting| %>
         <p> Meeting:
-          <%= past_meeting.meeting_time %>
+          <%= meeting.meeting_time %>
         </p>
-        <%= image_tag(@meeting_user.avatar.url(:thumb)) %>
-        <p>
-          <button class="btn-profile"><%= link_to "Get Points!", topics_path %></button>
-        <p>
-    </div> 
-<% end %>
->>>>>>> redirect_waitlist
 
-<% @meetings.each do |meeting| %>
-<div class="user-profile">
-  <%#= @meeting_user.first_name %>
-<<<<<<< HEAD
-  
-  
-=======
-  <%= meeting.requestee.first_name %>
-  <%= meeting.requestor.first_name %>
->>>>>>> redirect_waitlist
-  <p> Meeting:
-    <%= meeting.meeting_time %>
-  </p>
+        <% if current_user == meeting.requestor %>
 
-    <% if current_user == meeting.requestor %>
-<<<<<<< HEAD
-      <%= meeting.requestee.first_name %>
-      <%= image_tag(meeting.requestee.avatar.url(:thumb)) %>
-    <% else %>
-      <%= meeting.requestor.first_name %>
-      <%= image_tag(meeting.requestor.avatar.url(:thumb)) %>
-
-=======
-      <%#= image_tag(meeting.requestee.avatar.url(:thumb)) %>
-    <%# else %>
-      <%#= image_tag(meeting.requestor.avatar.url(:thumb)) %>
->>>>>>> redirect_waitlist
-    <% end %>
-
-  <%#= image_tag(@meeting_user.avatar.url(:thumb)) %>
-  <p>
-    <% if meeting.accepted == false %>
-      <% if current_user == meeting.requestee %>
-        <%= form_for(meeting) do |f| %>
-          <div class="field">
-            <%= f.hidden_field :accepted, value: true %>
-          </div>
-          <div class="actions">
-            <%= f.submit "Accept" %>
-          </div>
+          <%= meeting.requestee.first_name %>
+          <%= image_tag(meeting.requestee.avatar.url(:thumb)) %>
+        <% else %>
+          <%= meeting.requestor.first_name %>
+          <%= image_tag(meeting.requestor.avatar.url(:thumb)) %>
         <% end %>
-      <% else %>
-        Pending Approval
-      <% end %>
-      <%# elsif Time.current >= meeting.meeting_time %>
 
-          <!-- <p>Passed</p> -->
+     
+        <p>
+          <% if meeting.accepted == false %>
+            <% if current_user == meeting.requestee %>
+              <%= form_for(meeting) do |f| %>
+                <div class="field">
+                  <%= f.hidden_field :accepted, value: true %>
+                </div>
+                <div class="actions">
+                  <%= f.submit "Accept" %>
+                </div>
+              <% end %>
+            <% else %>
+              Pending Approval
+            <% end %>
+          <% else %>
+            <button class="btn-profile"><%= link_to "Plan Meeting", topics_path %></button>
 
-        <!-- <button class="btn-profile"><%#= link_to "Accept", meetings_path %></button> -->
-    <% else %>
-      <button class="btn-profile"><%= link_to "Plan Meeting", topics_path %></button>
+          <% end %>
+                <button><%= link_to 'Cancel Meeting', meeting, method: :delete, data: { confirm: 'Are you sure you want to cancel your meeting?' } %>
 
+        </p>
     <% end %>
-          <button><%= link_to 'Cancel Meeting', meeting, method: :delete, data: { confirm: 'Are you sure you want to cancel your meeting?' } %>
-
-  </p>
-</div>
-<% end %>
+    <% end %>
+  </div>

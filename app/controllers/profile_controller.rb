@@ -15,7 +15,7 @@ class ProfileController < ApplicationController
   		#@meeting_requestor = User.find(@meetings.requestor_id)
   		#@meeting_requestor = User.find(@meeting_requestor)
 
-  		@past_meetings = Meeting.where('meeting_time <= ? AND (requestor_id= ? OR requestee_id= ?)', Date.today, current_user,  current_user).limit(3).order('meeting_time asc')
+  		@past_meetings = Meeting.where('meeting_time <= ? AND (requestor_id= ? OR requestee_id= ?)', Date.today, current_user,  current_user).order('meeting_time asc')
 
   		#Something.find(:all, :order => "id desc", :limit => 5)
 
