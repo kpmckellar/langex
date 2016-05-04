@@ -1,0 +1,416 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+
+#index_body	{
+
+}
+
+body 	{
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+	color: rgba(52, 152, 219, 1);
+
+}
+
+header	{
+	display: block;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding-bottom: 0;
+
+	
+}
+
+.header	{
+	background-color: rgba(52, 152, 219,1.0);
+	margin: 0;
+	padding: .2em;
+	padding-right: 1em;
+	font-size: 2em;
+	text-align: right;
+	color: rgba(149, 165, 166,1.0)
+
+}
+
+.profile_picture	{
+	height: 7em;
+	width: 7em;
+	border-radius: 100%;
+	overflow: hidden;
+	position: relative;
+	bottom: 1.75em;
+	margin-left: 2em;
+}
+
+h1	{
+	/*margin: 0;
+	font-size: 3em;
+	font-family: Futura, sans-serif;
+	font-weight: "extra-bold";*/
+}
+
+#index_logo	{
+	padding-top: .5em;
+	text-align: center;
+	font-size: 9em;
+	color: rgba(127, 140, 141, 1.0);
+	font-family: Montserrat, sans_serif;
+}
+
+#how_it_works	{
+	font-size: 6em;
+	margin-top: 1em;
+	border-bottom: 10px solid black;
+	border-length: 110%;
+	display: inline-block;
+}
+
+
+h3	{
+	font-size: 2em;
+	color: rgba(56, 56, 56, 1);
+}
+
+h4	{
+	color: rgba(56, 56, 56, 1);
+	font-size: 1.5em;
+	text-align: center;
+
+}
+
+
+h6	{
+	/*font-size: 1.5em;
+	font-family: 'Montserrat', sans-serif;
+	color: rgba(56, 56, 56, 1);*/
+}
+
+p {
+	margin: 0;
+	/*font-family: 'Montserrat', sans-serif;
+	font-size: 1em;*/
+}
+
+#about_quote	{
+	padding: 2em;
+	text-align: center;
+	font-size: 2em;
+}
+
+#about_text	{
+	bottom: 30;
+	color: white;
+	background-color: rgba(56, 56, 56, 1);
+	display: inline-block;
+	margin: 1em;
+	padding: 1em 1.5em;
+	/*display: inline;*/
+}
+
+#arrow	{
+	font-size: 4em;
+	margin-top: 2.5em;
+	padding-top: .25em;
+	text-align: center;
+}
+
+footer	{
+	background-color: rgba(56, 56, 56, 1);
+	height: 10em;
+}
+
+.footer_slogan	{
+	/*color: #B5B5B5;*/
+	height: 1em;
+	text-align: right;
+}
+
+
+.container	{
+	margin: 0 12em 1 12em;
+	
+}
+
+.border 	{
+	border-bottom: 5px solid rgba(127, 140, 141, 1.0);
+	margin: 1em 12em 1em 12em;
+
+}
+
+/* DIVS */
+#top_index_wrapper	{
+	margin: -1.5em;
+	background: url("/assets/welcome/two_people_talking.jpeg");
+  		-webkit-background-size: cover;
+  		-moz-background-size: cover;
+  		-o-background-size: cover;
+ 	background-size: cover;
+ 	background-attachment: fixed;
+ 	font-family: Montserrat, sans_serif;
+
+
+}
+
+
+
+
+
+#slogan_blue	{
+	padding-top: 3em;
+	color: rgba(52, 152, 219, .8);
+	text-align: center;
+	font-size: 2.5em;
+}
+
+#slogan_gray	{
+	padding-top: 1em;
+	color: rgba(56, 56, 56, 1);
+	text-align: center;
+	font-size: 1.8em;
+}
+
+#profile_circle	{
+	background: rgba(189, 195, 199, .5);
+	border-radius: 100%;
+	width: 42em;
+	height: 43em;
+    margin: 4em auto;
+    text-align: center; 
+}
+
+.profile_circle_glyphicon	{
+	font-size: 8em;
+	padding-top: .25em;
+	text-align: center;
+}
+
+#index_sign_up, #index_sign_in {
+	display: block;
+	border-radius: 2%;
+	margin: .25em 3.75em;
+	padding: .5em .5em;
+	font-size: 2.5em;
+}
+ 
+ #index_sign_up:hover, 	#index_sign_in:hover, {
+ 	background-color: rgba(52, 152, 219, .5);
+ }
+
+
+#index_sign_up	{
+	background-color: rgba(56, 56, 56, .6);
+	/*background-color: rgba(56, 56, 56, .6);
+	border-radius: 5%;
+	width: 200px;
+	height: 30px;
+	float: left;
+    position: relative;
+    left: 22%;
+    padding: .5em;
+    margin: .75em;*/
+    margin-top: 2em;
+
+}
+
+#index_sign_in	{
+	background-color: rgba(56, 56, 56, .1);
+	/*	border-radius: 5%;
+	border: rgba(0,0,0,1);
+	width: 200px;
+	height: 30px;
+	float: left;
+    position: relative;
+    left: 22%;
+    padding: .5em;
+    margin: .75em;*/
+    
+}
+
+#index_about	{
+/*	background: #92DCE0;*/
+	background: rgba(52, 152, 219,1.0);
+	margin-top: 2.5em;
+	text-align: center;
+	width: 100%;
+
+	/*height: 50em;
+	width: auto;
+	clear: both;*/
+}
+
+.pintrest_about	{
+	width: 100%;
+	height: 41em;
+	margin: auto;
+}
+
+#about_column	{
+	display: inline-block;
+	background-color: rgba(52, 152, 219,1.0);
+	/*border: rgba(52, 152, 219,1.0);*/
+	width: 32%;
+	height: 20em;
+	border: none;
+	margin: -1;
+
+
+}
+
+#solid_about_column	{
+	display: inline-block;
+	width: 33.33%;
+	height: 20em;
+	background: rgba(56, 56, 56, 1);
+	/*border: rgba(56, 56, 56, 1);*/
+	margin: -1;
+
+}
+
+
+#under_fold	{
+/*	margin-top: 4em;
+	height: 30em;
+	width: 28em;
+	float: left;
+
+	font-size: 14px;
+	color: rgba(56, 56, 56, 1);
+*/
+}
+
+#under_fold_text	{
+	/*height: 30em;
+	width: 40em;
+	float: left;
+	margin: 0em;
+	font-size: 1em;
+	color: rgba(56, 56, 56, 1);*/
+	
+}
+
+#about_img_danny, #about_img_afua {
+	border-radius: 50%;
+	height: 25em;
+	width: 25em;
+	overflow: hidden;
+}
+
+#about_img_danny	{
+	background: url(images/danny.jpg) center; 
+}
+#about_img_afua	{
+	background: url(images/afua.jpg) center; 
+}
+
+#value_props	{	
+	background-color: rgba(52, 152, 219,1.0);
+	margin: auto;
+	min-height: 60em;
+	padding: 8em 0;
+
+	color: rgba(56, 56, 56, .5);
+	text-align: center;
+}
+
+#landing_description	{
+	padding: .5em 1.5em;
+	margin: auto;
+	margin-top: 2em;
+	background-color: #A8D3F0;
+	font-size: 1.75em;
+	width: 25em;
+	min-height: 9em;
+	text-align: center;
+	line-height: 1em;
+	border: solid rgba(56, 56, 56, .5);
+}
+
+.value_props{
+	margin: auto;
+	padding-top: 2em;
+	color: #ffff00;
+	line-height: 1.25em;
+	font-size: 3em;
+
+}
+
+.value_circles	{
+	margin: 1em 5%;
+	background: rgba(56, 56, 56, .5);
+	height: 30em;
+	width: 30em;
+	float: left;
+	border-radius: 100%;
+
+    box-shadow: 10px 10px 5px rgba(56, 56, 56, 1);
+}
+
+
+
+.nav_profile, .nav_log_out{
+	border-radius: 2%;
+	margin: .2em 0em 1em 0;
+	padding: .4em 2.5em;
+}
+
+.nav_log_out, .btn_profile, .nav_profile {
+	text-align: center;
+	border: solid rgba(127, 140, 141,1.0);
+	font-size: 1.65em;
+}
+
+.btn_profile	{
+	border-radius: 2%;
+	margin: 1em 0em .5em 0;
+	padding: .40em 1em;
+}
+
+.award_pannel	{
+	display: inline-block;
+	margin: 0 1em 0 10em;
+	position: absolute;
+	float: right;
+	padding: 0 5em;
+}
+
+.profile_nav	{
+	display: inline-block;
+	margin: 0 1em 0 10em;
+	position: absolute;
+	float: right;
+	padding: 0 5em;
+}
+
+
+.nav_log_out	{
+	background: rgba(192, 57, 43, .5)
+
+}
+
+.nav_log_out:hover {
+	background: rgba(192, 57, 43,1.0);
+}
+
+.btn_profile:hover, .nav_profile:hover	{
+	background-color: rgba(52, 152, 219,1.0);
+
+}
+
+
+
+
+
+
+
+
+

@@ -7,44 +7,66 @@
 	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	  <%= csrf_meta_tags %>
 	</head>
+	 <header class="header_banner">
+		
 
+		<h1 class="header_logo"> 
+		
+			
+				<%= link_to 'Sign Up', new_user_session_path, class: "btn btn-primary btn-lg pull-left" %>
+				
+				
 
-	<div class="row" >
-		<header>
-			<div class="wrapper">
-				<h1 class="header-logo"><%= link_to "Langauge Exchange", root_path %></h1>
-			</div>
-		</header>
-	</div>
+				<%= link_to 'Sign In', new_user_session_path, class: "btn btn-secondary-outline btn-lg pull-left" %>
+				
+			<%# if user_signed_in? %>
+			<%# else %>
+			<%#= link_to "Sign In", new_user_session_path, class: "btn btn-default"  %>
+
+			<%# end %>
+			<%= link_to "Lexody", root_path %>
+
+		</h1>
+	</header>
+
 
 		<body>
 			
-   				<h1><%#= yield :page_header %></h1>
  				 
 				<% if flash[:alert] %>
 				
-				<div class="wrapper">
+					<div class="wrapper">
 				    <p class="flash-error"><%= flash[:alert] %></p>
+					</div>
 				<% end %>
 				
 				<% if flash[:notice] %>
 
-				<div class="wrapper">
+					<div class="wrapper">
 				    <p class="flash-notice"><%= flash[:notice] %></p>
-				 <% end %>
-				</div>
-			</div>
+				 
+					</div>
+				<% end %>
+			
 			<!-- <div class="col-md-4" style=""> -->
 			
-			<div class="wrapper">
+			<!-- <div class="wrapper"> -->
 
 				<%= yield %>
-			</div>
+		
 		</body>
 
 		<footer>
 		<div class="footer">
-			<p class="footer">Made by language lovers, for language lovers.</p>
+			<div class="footer_nav">
+				<nav>Contact</nav>
+				<nav>About</nav>
+				<nav>FAQ</nav>
+				<nav>Sign Up</nav>
+				<p>Created by language lovers, for language lovers.</p>
+			</div>
+		</div>
+			<p>Made by language lovers, for language lovers.</p>
 		</div>
 		</footer>
 </html>
