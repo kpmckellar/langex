@@ -1,0 +1,20 @@
+<% if @meetings.nil? %>
+	<h1>Plan a meeting!</h1>
+
+<% else %>
+
+	<% @meetings.each do |meeting| %>
+	       
+	          
+
+
+	<div class="calendar-meeting-date">
+		<h1 class="calendar_day"><%= date_select("meeting", "meeting_time") %></h1>
+
+	<% end %>
+
+	</div>
+
+<% end %>
+
+<!-- http://api.rubyonrails.org/classes/ActionView/Helpers/DateHelper.html -->

@@ -1,16 +1,17 @@
 
+ <link rel="stylesheet" href="assets/stylesheets/profile.css.scss" />
 
 
 <div class="profile-container">
 	<div class"wrapper">
 
-		<div class="profile-picture" >
-			<%#= link_to image_tag(user.avatar.url(:thumb)), "/profile/#{user.id}/view" %>
-			<%= link_to image_tag(current_user.avatar.url(:thumb)), "/profile/#{current_user.id}/view" rescue nil  %>
+		<!-- <div class="profile-picture" > -->
+			
+			<%#= link_to image_tag(current_user.avatar.url(:thumb)), "/profile/#{current_user.id}/view" rescue nil  %>
 
-			<%#= image_tag(current_user.avatar.url(:thumb), :width => 200, :height => 300, :crop => :fill, :class=>"img-rounded" ) rescue nil  %>
+			<!-- 
 			</div>
-		
+		 -->
 		<div class="profile-nav" >
 				<% if user_signed_in? %>
 				
@@ -31,6 +32,13 @@
 	</div>
 </div>
 
+
+<div class="profile-container">
+	<div class"wrapper">
+		<%= render partial: 'test'%>
+		<div class="clear"></div>
+	</div>
+</div>
 
 <div class="profile-container">
 	<div class"wrapper">

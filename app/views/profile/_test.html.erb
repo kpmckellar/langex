@@ -1,0 +1,34 @@
+	
+<% if @meetings.nil? %>
+	<h1>Plan a meeting!</h1>
+
+<% else %>
+
+	<% @meetings.each do |meeting| %>
+	       
+	          
+
+
+	<div class="calendar-meeting-date">
+		
+			<% if meeting.meeting_time.today? %>
+				<h1 class="calendar_day">
+					Today!
+			<% elsif meeting.meeting_time == Date.tomorrow %>
+				<h1>Tomorrow!</h1>
+			<% else %>
+				<h1 class="calendar_day">
+
+				<%= meeting.meeting_time.strftime("%A %d %b")  %>
+			<% end %>
+			</h1>
+
+			
+
+
+	</div>
+	<% end %>
+
+	
+
+<% end %>

@@ -1,0 +1,21 @@
+// Place all the styles related to the roles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.calendar-meeting-date	{
+	border: .1em solid grey;
+	width: 40em;
+	height: 40em;
+	margin: auto;
+	display: inline-block;
+}
+
+.calendar_day	{
+	background-color: #E57373;
+	width: 95%;
+	padding: .5em;
+	margin: 2%;
+	text-align: center;
+	font-size: 3.5em;
+}
+
