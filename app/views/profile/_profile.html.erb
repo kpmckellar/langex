@@ -1,23 +1,13 @@
-<div class="row">
-	<div class ="col-xs-4 ">
-		<p class="round-image-50"><%= image_tag(@user.avatar.url(:thumb)) rescue nil %></p>
-	</div>
-	<div class="col-xs-4 text-right .col-md-offset-1">
-	<%# unless current_user == user %>
-        <%= link_to 'Send message', new_message_path(to: @user.id), class: 'btn btn-default btn-sm' %>
 
-      <%# end %>
-    </div>
+<div class="user_profile_wrapper">
 
-    <div class="col-xs-4 text-right .col-md-offset-1">
-	<%# unless current_user == user %>
-        <%= link_to 'Request Meeting', new_meeting_path(requestee_id: @user.id), class: 'btn btn-default btn-sm' %>
-        
-      <%# end %>
-    </div>
 
 
 	<div class="col-xs-4 text-right .col-md-offset-1">
+		<%= link_to 'Request Meeting', new_meeting_path(requestee_id: @user.id), class: 'btn btn-default btn-sm' %>
+
+		<%= link_to 'Send message', new_message_path(to: @user.id), class: 'btn btn-default btn-sm' %>
+
 		<h4 class="text-right"><%= @user.first_name %></h4>
 		<h5 class="text-right"><%= @user.location %></h5>
 		<h6>Fluent in:</h6>
@@ -28,9 +18,11 @@
 			<% @nonfluent_languages.each do |proficiency| %>
 				<p><%= proficiency.language.language %></p>
 			<% end %>
-		<h6><%= @user.bio %></h6>
-		<h6><%= @user.nationality %></h6>
+
+		<h6>Bio: <br><%= @user.bio %></h6>
+		<h6>Nationality:<br><%= @user.nationality %></h6>
 	</div>
+	<aside id="user_profile_pic"><%= image_tag(@user.avatar.url) rescue nil %></aside>
 </div>
-<hr>
-<br>
+
+

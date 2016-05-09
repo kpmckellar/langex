@@ -8,6 +8,7 @@ class MeetingsController < ApplicationController
     @requestee = User.where(params[:requestee_id])
     @requestor = User.where(params[:requestor_id])
 
+    @all_meetings = Meeting.where('requestor_id= ? OR requestee_id= ?', current_user,  current_user).limit(10).order('meeting_time asc')
 
     @meetings = Meeting.where('meeting_time >= ? AND (requestor_id= ? OR requestee_id= ?)', Date.today, current_user,  current_user).limit(3).order('meeting_time asc')
 

@@ -4,27 +4,27 @@
 
 <div class="profile-container">
 	<div class"wrapper">
-
-		<!-- <div class="profile-picture" > -->
-			
-			<%#= link_to image_tag(current_user.avatar.url(:thumb)), "/profile/#{current_user.id}/view" rescue nil  %>
-
-			<!-- 
-			</div>
-		 -->
-		<div class="profile-nav" >
+		<div class="fixed_profile_nav" >
 				<% if user_signed_in? %>
-				
-					<%= link_to 'Your Conversations', conversations_path, class: "btn btn-default btn-lg active" %>
-					<%= link_to 'Your Meetings', meetings_path, class: "btn btn-default btn-lg active" %>
-					<%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-default btn-lg active" %><br>
-					<%= link_to "Add a Language", new_languages_user_path, class: "btn btn-default btn-lg active" %>
-					<% if @current_user.approved? %>
-						<%= link_to "Admin", users_path, class: "btn btn-default btn-lg active" %>
+					<%= link_to conversations_path, class: "profile_nav_button" do %>
+    					<i class="glyphicon glyphicon-comment"></i>
 					<% end %>
-
 					
-					<%= link_to "Sign Out", destroy_user_session_path, class: "btn btn-default btn-lg active", method: :delete%>
+					<%= link_to edit_user_registration_path, class: "profile_nav_button" do %>
+    					<i class="glyphicon glyphicon-cog"></i>
+					<% end %>
+					
+					<% if @current_user.approved? %>
+						<%= link_to users_path, class: "profile_nav_button" do %>
+							<i class="glyphicon glyphicon-certificate"></i>
+						<% end %>
+					<% end %>
+				
+					<%= link_to destroy_user_session_path,  class: "profile_nav_button", :method => :delete  do %>
+					 	<i class="glyphicon glyphicon-off"></i>
+					<% end %>
+					<%#= link_to glyph(:"glyphicon-off") destroy_user_session_path method: :delete %>
+					<%#= link_to "Sign Out", destroy_user_session_path, class: "btn btn-default btn-lg active", method: :delete%>
 				<% else %>
 				<% end %>
 		</div>
@@ -40,29 +40,28 @@
 	</div>
 </div>
 
-<div class="profile-container">
+<!-- <div class="profile-container">
 	<div class"wrapper">
-		<%= render partial: 'meetings'%>
+		<%#= render partial: 'meetings'%>
 		<div class="clear"></div>
 	</div>
-</div>
-<h1>Past meetings:</h1>
-<div class="profile-container">
+</div> -->
+<!-- <h1>Past meetings:</h1>
+ --><!-- <div class="profile-container">
 	<div class"wrapper">
-		<%= render partial: 'past_meetings'%>
+		<%#= render partial: 'past_meetings'%>
 		<div class="clear"></div>
 	</div>
-</div>
+</div> -->
 
 <div class="profile-container">
 	<div class"wrapper">
 		<%= render partial: 'match'%>
 		<div class="clear"></div>
 	</div>
-</div>
+</div> 
 
 
-</div>		
 
 
 

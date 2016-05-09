@@ -1,24 +1,36 @@
 <p id="notice"><%= notice %></p>
 
+<% if @meetings.nil? %>
+	<h1>Plan your first meeting!</h1>
+<% else %>
+
+<% @meetings.each do |meeting| %>
+
 <p>
   <strong>Requestor:</strong>
-  <%= @meeting.requestor.first_name %>
+  <%= meeting.requestor.first_name %>
 </p>
 
 <p>
   <strong>Requestee:</strong>
-  <%= @meeting.requestee.first_name %>
+  <%= meeting.requestee.first_name %>
 </p>
 
 <p>
   <strong>Meeting time:</strong>
-  <%= @meeting.meeting_time %>
+  <%= meeting.meeting_time %>
 </p>
 
 <p>
   <strong>Accepted:</strong>
-  <%= @meeting.accepted %>
+  <%= meeting.accepted %>
 </p>
 
-<%= link_to 'Edit', edit_meeting_path(@meeting) %> |
-<%= link_to 'Back', meetings_path %>
+<% end %>
+
+
+
+
+<%#= link_to 'Edit', edit_meeting_path(@meeting) %> |
+<%#= link_to 'Back', meetings_path %>
+

@@ -1,9 +1,34 @@
+
+
 <p id="notice"><%= notice %></p>
+<div class="wrapper">
+	<% if @all_meetings.nil? %>
+		<h1>Plan your first meeting!</h1>
+	<% else %>
 
-<div><%= render partial: 'profile/meetings' %></div>
-<br>
-<div><%= render partial: 'profile/past_meetings' %></div>
+		<% @all_meetings.each do |meeting| %>
+		<div class="meeting_wrapper">
+			<% if current_user == meeting.requestor %>
 
-<div><%#= render partial: 'requested' %></div>
+	          <h3><%= meeting.requestee.first_name %></h3>
+	          <%= image_tag(meeting.requestee.avatar.url(:thumb)) %>
+	        <% else %>
+	          <strong><%= meeting.requestor.first_name %></strong>
+	          <%= image_tag(meeting.requestor.avatar.url(:thumb)) %>
+	        <% end %>
+			
 
-<%#= link_to 'New Meeting', new_meeting_path %>
+			<p>
+			  <h4>Meeting time:
+			  <%= meeting.meeting_time.strftime("%H:%M")%></h4>
+			</p>
+
+			<!-- <p>
+			 	Accepted:
+			  <%#= meeting.accepted %>
+			</p> -->
+		</div>
+
+		<% end %>
+	<% end %>
+</div>

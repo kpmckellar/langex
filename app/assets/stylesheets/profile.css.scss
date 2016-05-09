@@ -4,9 +4,9 @@
 
 .calendar-meeting-date	{
 	border: .1em solid grey;
-	width: 40em;
+	width: 27%;
 	height: 40em;
-	margin: auto;
+	margin: 1.55%;
 	display: inline-block;
 }
 
@@ -17,5 +17,71 @@
 	margin: 2%;
 	text-align: center;
 	font-size: 3.5em;
+}
+
+.other_user_picture{
+	width: 7em;
+}
+
+.other_user_picture	{
+	height: 51%;
+	width: 50%;
+	border-radius: 100%;
+	overflow: hidden;
+	text-align: center;
+	margin: 4.5em 3em 0 3em;
+}
+
+.meeting_container	{
+	width: 90%;
+	height: 50%;
+
+}
+
+.meeting_user_information	{
+	text-align: right;
+	display: inline-block;
+	padding: 0;
+	
+}
+
+
+
+.fixed_profile_nav	{
+	display: inline;
+    top: 5em;
+    right: 0em;
+    position: fixed;
+    float: right;
+    background-color: rgba(149, 165, 166,1.0);
+    width: 1.75em;
+   	font-size: 3em;
+
+}
+
+.user_profile_wrapper	{
+	padding: 5em;
+}
+
+.match_user_photo	{
+	height: 20em;
+	width: 20em;
+	
+	display: inline-block;
+	
+}
+
+.match_user_photo img{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	border-radius: 100%;
+	border: solid 1px black;
+
+}
+
+#user_profile_pic	img{
+	height: 30em;
+	align: right;
 }
 

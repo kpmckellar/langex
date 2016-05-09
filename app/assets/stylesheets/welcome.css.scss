@@ -43,11 +43,9 @@ header	{
 }
 
 .profile_picture	{
-	height: 7em;
-	width: 7em;
+	
 	border-radius: 100%;
 	overflow: hidden;
-	position: relative;
 	bottom: 1.75em;
 	margin-left: 2em;
 }
@@ -204,6 +202,7 @@ footer	{
  
  #index_sign_up:hover, 	#index_sign_in:hover, {
  	background-color: rgba(52, 152, 219, .5);
+ 	text-decoration: none;
  }
 
 

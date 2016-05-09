@@ -5,6 +5,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 
+   # ==== Examples
+  # glyph(:share_alt)
+  # # => <i class="icon-share-alt"></i>
+  # glyph(:lock, :white)
+  # # => <i class="icon-lock icon-white"></i>
+
+  def glyph(icon_name_postfix, hash={})
+    content_tag :span, nil, hash.merge(class: "glyphicon glyphicon-#{icon_name_postfix.to_s.gsub('_','-')}")
+  end
 
 
   rescue_from CanCan::AccessDenied do |exception|
