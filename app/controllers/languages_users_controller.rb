@@ -34,11 +34,11 @@ class LanguagesUsersController < ApplicationController
 		@users = LanguagesUser.where(:user_id => current_user.id).count
 		@user_count = @users
 		@languages_user = LanguagesUser.new
-<<<<<<< HEAD
-		#@user = current_user	
-# >>>>>>> waitlist
-=======
->>>>>>> redirect_waitlist
+# <<<<<<< HEAD
+# 		#@user = current_user	
+# # >>>>>>> waitlist
+# =======
+# >>>>>>> redirect_waitlist
 	end
 
 	def edit
@@ -46,7 +46,7 @@ class LanguagesUsersController < ApplicationController
 
 	def create
 		# if user_signed_in?
-<<<<<<< HEAD
+# <<<<<<< HEAD
 		#@langauges_user.user_id = current_user.id if current_user
 		#@user = current_user
 		#languages_user_params.merge!(user_id: current_user)
@@ -66,8 +66,8 @@ class LanguagesUsersController < ApplicationController
 			    
 # 			end
 # =======
-=======
->>>>>>> redirect_waitlist
+# =======
+# >>>>>>> redirect_waitlist
 			@languages_user = LanguagesUser.new(languages_user_params)
 			@languages_user.user_id = current_user.id
   
@@ -81,10 +81,10 @@ class LanguagesUsersController < ApplicationController
 		      end
 		    end
 
-<<<<<<< HEAD
+# <<<<<<< HEAD
 # >>>>>>> waitlist
-=======
->>>>>>> redirect_waitlist
+# =======
+# >>>>>>> redirect_waitlist
 		# else
 		# 	puts 'You must be logged in'
 		# 	redirect_to new_languages_user_path
