@@ -14,5 +14,5 @@ Role.create(name: "user")
 
 
 
-User.create(first_name: "God", last_name: "Costigan" email: => 'walshcostigan@gmail.com', location: "NYC", nationality: "American", bio: "Hello", admin: true, approved: true, role_id: 1, password: 'password', password_confirmation: 'password')
-User.create(first_name: "Walsh", last_name: "Costigan" email: => 'walsh@gmail.com', location: "NYC", nationality: "American", bio: "Hello", admin: true, approved: true, role_id: 0, password: 'password', password_confirmation: 'password')
+User.create(first_name: "God", last_name: "Costigan", email: 'walshcostigan@gmail.com', location: "NYC", nationality: "American", bio: "Hello", admin: true, approved: true, role_id: 1, password: 'password', password_confirmation: 'password')
+User.create(first_name: "Walsh", last_name: "Costigan", email: 'walsh@gmail.com', location: "NYC", nationality: "American", bio: "Hello", admin: true, approved: true, role_id: 0, password: 'password', password_confirmation: 'password')
