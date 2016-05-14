@@ -4,29 +4,31 @@
 	<h1>Plan your first meeting!</h1>
 <% else %>
 
-<% @meetings.each do |meeting| %>
+	<% @meetings.each do |meeting| %>
 
-<p>
-  <strong>Requestor:</strong>
-  <%= meeting.requestor.first_name %>
-</p>
+	<p>
+	  <strong>Requestor:</strong>
+	  <%= meeting.requestor.first_name %>
+	</p>
 
-<p>
-  <strong>Requestee:</strong>
-  <%= meeting.requestee.first_name %>
-</p>
+	<p>
+	  <strong>Requestee:</strong>
+	  <%= meeting.requestee.first_name %>
+	</p>
 
-<p>
-  <strong>Meeting time:</strong>
-  <%= meeting.meeting_time %>
-</p>
+	<p>
+	  <strong>Meeting time:</strong>
+	  <%= meeting.meeting_time %>
+	</p>
 
-<p>
-  <strong>Accepted:</strong>
-  <%= meeting.accepted %>
-</p>
+	<p>
+	  <strong>Accepted:</strong>
+	  <%= meeting.accepted %>
+	</p>
 
+	<% end %>
 <% end %>
+
 
 
 
