@@ -6,8 +6,18 @@
 	border: .1em solid grey;
 	width: 27%;
 	height: 40em;
-	margin: 1.55%;
+	margin: 1.5em;
 	display: inline-block;
+
+}
+
+.matches_wrapper	{
+	background-color: rgb(244, 252, 252);
+	margin: auto;
+	padding: 5em;
+	margin-bottom: 3em;
+	width: 80%;
+	text-align: center;
 }
 
 .calendar_day	{
@@ -16,32 +26,35 @@
 	padding: .5em;
 	margin: 2%;
 	text-align: center;
-	font-size: 3.5em;
+	font-size: 3.2em;
 }
 
-.other_user_picture{
-	width: 7em;
-}
+
 
 .other_user_picture	{
-	height: 51%;
-	width: 50%;
+	height: 45%;
+	width: 45%;
 	border-radius: 100%;
 	overflow: hidden;
-	text-align: center;
-	margin: 4.5em 3em 0 3em;
+	text-align: left;
+	margin: 0 .5em 5em .5em;
 }
 
-.meeting_container	{
-	width: 90%;
-	height: 50%;
+.meetings_container	{
+	width: 80%;
+	height: 43em;
+	margin: auto;
+	margin-top: 2em;
+	margin-bottom: 5em;
 
 }
 
 .meeting_user_information	{
 	text-align: right;
 	display: inline-block;
-	padding: 0;
+	padding: .1em;
+	width: 13em;
+	margin-top: 2em;
 	
 }
 
@@ -66,7 +79,7 @@
 .match_user_photo	{
 	height: 20em;
 	width: 20em;
-	
+	margin: 2em;
 	display: inline-block;
 	
 }

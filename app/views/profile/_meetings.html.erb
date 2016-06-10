@@ -38,7 +38,7 @@
               Pending Approval
             <% end %>
           <% else %>
-            <button class="btn-profile"><%= link_to "Plan Meeting", topics_path %></button>
+            <%= link_to "Plan Meeting", topics_path, class: "btn btn-secondary-outline btn-lg pull-left" %>
 
           <% end %>
                 <button><%= link_to 'Cancel Meeting', meeting, method: :delete, data: { confirm: 'Are you sure you want to cancel your meeting?' } %>

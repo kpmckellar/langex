@@ -37,17 +37,17 @@
  				 
 				<% if flash[:alert] %>
 				
-					<div class="wrapper">
-				    <p class="flash-error"><%= flash[:alert] %></p>
+					
+				   <h2 class="alert alert-notice"><center><%= flash[:alert] %></center></h2>
 					</div>
 				<% end %>
 				
 				<% if flash[:notice] %>
 
-					<div class="wrapper">
-				    <p class="flash-notice"><%= flash[:notice] %></p>
+					
+				    <h2 class="alert alert-success"><center><%= flash[:notice] %></center></h2>
 				 
-					</div>
+					
 				<% end %>
 			
 			<!-- <div class="col-md-4" style=""> -->

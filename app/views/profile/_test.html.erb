@@ -8,64 +8,58 @@
 		<% else %>
 
 			<% @meetings.each do |meeting| %>
-			       
-			          
-
 
 			<div class="calendar-meeting-date">
-				<!-- Meeting Time -->
+			  <!-- Meeting Time -->
+				<h1 class="calendar_day">
 					<% if meeting.meeting_time.today? %>
-						<h1 class="calendar_day">
 							Today!
 					<% elsif meeting.meeting_time == Date.tomorrow %>
-						<h1>Tomorrow!</h1>
+						Tomorrow!
 					<% else %>
-						<h1 class="calendar_day">
-
 						<%= meeting.meeting_time.strftime("%A %d %b")  %>
-
 					<% end %>
-					</h1>
+				</h1>
+			  <!-- User picture -->
 
 					<% if current_user == meeting.requestor %>
-					<!-- Meeting Person -->
-			          <!-- <h3>Bonjour, je suis <%= meeting.requestee.first_name %>. J'appris l'anglais.</h3> -->
 			          <%= image_tag(meeting.requestee.avatar.url, class: "other_user_picture") %>
 			          	<% @user = meeting.requestee %>
 			        <% else %>
 			        	<% @user = meeting.requestor %>
-
-			          <%#= meeting.requestor.first_name %>
-			          <%= image_tag(meeting.requestor.avatar.url, class: "other_user_picture") %>
+			          	<%= image_tag(meeting.requestor.avatar.url, class: "other_user_picture") %>
 
 			        <% end %>
-			        <aside class="meeting_user_information">
-						<h2><%= @user.first_name %></h2>
-					</aside>
 
-					<!-- Meeting Buttons -->
 
-					<p>
+		        <aside class="meeting_user_information">
+					<h2><%= @user.first_name %></h2>
+					<h3>4:20 PM</h3><br>
+
+				
+				<!-- Meeting Buttons -->
+
+					
 			          <% if meeting.accepted == false %>
 			            <% if current_user == meeting.requestee %>
 			              <%= form_for(meeting) do |f| %>
-<!-- 			                <div class="field">
- -->			                  <%= f.hidden_field :accepted, value: true %>
-			                <<!-- /div>
-			                <div class="actions"> -->
-			                  <%= f.submit "Accept" %>
-<!-- 			                </div>
- -->			              <% end %>
+			                  <%= f.hidden_field :accepted, value: true %>
+			                  <%= f.submit "Accept", class: "btn btn-primary btn-lg" %>
+			                  <br>
+			              <% end %>
 			            <% else %>
-			              Pending Approval
+			              Pending Approval<br>
 			            <% end %>
 			          <% else %>
-			            <button class="btn-profile"><%= link_to "Plan Meeting", topics_path %></button>
+			            <%= link_to "Plan Meeting", topics_path, class: "btn btn-primary btn-lg" %>
+			            <br>
 
 			          <% end %>
-			                <button><%= link_to 'Cancel Meeting', meeting, method: :delete, data: { confirm: 'Are you sure you want to cancel your meeting?' } %>
-
-			        </p>
+			          		<br>
+			                <%= link_to 'Cancel Meeting', meeting, method: :delete, data: { confirm: 'Are you sure you want to cancel your meeting?' }, class: "btn btn-default btn-lg" %>
+			       
+			    </aside>
+			   
 
 
 			</div>

@@ -27,8 +27,12 @@
         <td><%= topic.body %></td>
         <td><%= topic.approved %></td>
         <td><%= link_to 'Show', topic %></td>
-        <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
+        <td><%#= link_to 'Edit', current_user.favorite(topic)%></td>
+        <td><%= link_to 'Favorite', edit_topic_path(topic) %></td>
+
         <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
+
       </tr>
     <% end %>
   </tbody>

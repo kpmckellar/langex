@@ -45,7 +45,7 @@ class MeetingsController < ApplicationController
 
     respond_to do |format|
       if @meeting.save
-        format.html { redirect_to @meeting, notice: 'Meeting was successfully created.' }
+        format.html { redirect_to @meeting, notice: 'Your langauge exchange was successfully requested!' }
         format.json { render :show, status: :created, location: @meeting }
       else
         format.html { render :new }
@@ -73,7 +73,7 @@ class MeetingsController < ApplicationController
   def destroy
     @meeting.destroy
     respond_to do |format|
-      format.html { redirect_to meetings_url, notice: 'Meeting was successfully destroyed.' }
+      format.html { redirect_to home_url, notice: 'Meeting was successfully cancelled.' }
       format.json { head :no_content }
     end
   end

@@ -1,46 +1,46 @@
 
 
-<div class="container">
 
-	<div class="wrapper">
+
+	<div class="matches_wrapper">
 		<h2>Plan a meeting now with one of these language learners!</h2>
 
 		<% @fluent_languages.each do |proficiency| %>
-					<% if current_user != @nonproficient_users %>
-						<% @nonproficient_users = User.seeking_proficiency_in(proficiency.language.id) rescue nil%>
-							<% if @nonproficient_users != nil %>
-								<% @nonproficient_users.each do |nonprof_user|  %>
-							
+			<% if current_user != @nonproficient_users %>
+				<% @nonproficient_users = User.seeking_proficiency_in(proficiency.language.id) rescue nil%>
+					<% if @nonproficient_users != nil %>
+						<% @nonproficient_users.each do |nonprof_user|  %>
+					
 
-									<% @nonfluent_languages.each do |nonproficiency| %>
-									<% @proficient_users = User.proficient_in(nonproficiency.language.id) %>
+							<% @nonfluent_languages.each do |nonproficiency| %>
+							<% @proficient_users = User.proficient_in(nonproficiency.language.id) %>
 
-												<% if @proficient_users.any? %>
+								<% if @proficient_users.any? %>
 
-													<% @proficient_users.each do |user| %>
-														<% if nonprof_user == user %>
-															<% if nonprof_user != current_user %>
+									<% @proficient_users.each do |user| %>
+										<% if nonprof_user == user %>
+											<% if nonprof_user != current_user %>
 
-																	<%#= render partial: 'user', object: nonprof_user  %>
-																<div class="match_user_photo">
-																			<%= link_to image_tag(user.avatar.url), "/profile/#{user.id}/view" %>
-																</div>							
-															<% end %>
-														<% end %>
-													<% end %>
-												<% end %>
+													<%#= render partial: 'user', object: nonprof_user  %>
+												<div class="match_user_photo">
+															<%= link_to image_tag(user.avatar.url), "/profile/#{user.id}/view" %>
+												</div>							
+											<% end %>
+										<% end %>
 									<% end %>
-									
 								<% end %>
-			
-		
 							<% end %>
-						<%# end %>
+							
+						<% end %>
+	
+
 					<% end %>
+				<%# end %>
+			<% end %>
 		<% end %>
 	</div>
 
-</div>
+
 
 
 
