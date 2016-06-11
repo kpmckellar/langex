@@ -6,7 +6,7 @@
   <%#= @user.email %>
 </p> -->
 
-<h3><%= @user == @current_user ? "Your Account Settings" : "Edit User" %></h3>
+<h3><%= @user == @current_user ? "Your Account Settings" : "Edit User"%></h3>
  
 <%= form_for(@user, :html => { :method => :put }) do |f| %>
   <%#= error_messages(@user,"Could not update user") %>

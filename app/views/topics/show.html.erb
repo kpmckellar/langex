@@ -1,5 +1,16 @@
-<p id="notice"><%= notice %></p>
 
+
+<% if @current_user.topics.include? @topic %>
+  <%= form_tag(controller: "topics", action: "unfavorite", method: "post") do %>
+      <%= submit_tag "Unfavorite"%>
+  <% end %>
+<% else %>
+
+
+  <%= form_tag(controller: "topics", action: "favorite", method: "post") do %>
+      <%= submit_tag "Favorite"%>
+  <% end %>
+<% end %>
 <p>
   <strong>User:</strong>
   <%= @topic.user.first_name %>
@@ -37,3 +48,4 @@
 
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
 <%= link_to 'Back', topics_path %>
+

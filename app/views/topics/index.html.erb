@@ -1,43 +1,76 @@
-<p id="notice"><%= notice %></p>
+<h1>Favorite Topics</h1>
+  <% if @current_topics == nil %>
+    <h2>Look through the following topics, and choose what you would like to work on during your language exchange meeting.</h2>
+  <% else %>
+    <h2>These are your subjects you are currently working on during language exchanges.</h2>
 
-<h1>Listing Topics</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Language</th>
-      <th>Level</th>
-      <th>Tags</th>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Approved</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+          <% @current_topics.each do |topic|%>
+          
+            <div class="favorite-topics">
+              <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 
-  <tbody>
+              <%= link_to topic.title, topic, class: "favorite-topic-title"%>
+
+            <!-- <td><%#= topic.title %></td>
+            <td><%#= topic.language.language %></td>
+            <td><%#= topic.level %></td>
+            <td><%#= topic.tags %></td>
+            
+            <td><%#= topic.body %></td> -->
+       
+           
+            <!-- <td><%#= link_to 'Edit', current_user.favorite(topic)%></td>
+            <td><%#= link_to 'Favorite', topic.favorite, method: :post %></td>
+            <td><%#= link_to 'fav', topic, method: :post %></td>
+           -->
+
+            <%#= link_to "favorite", favorite_path(topic.id), method: :put %>
+
+            <%#= form_for topic, url: {action: "favorite"} method: :post do %>
+              <%#= submit_tag "Favorite" %>
+            <%# end %>
+
+          
+        </div>
+        <% end %>
+
+  <% end %>
+
+<div class="topic-wrapper">
+
+<h1>Browse conversation topics for your language exchange meetings.<br>Click any topic to read more, and save to your favorites.</h1>
+
+
     <% @topics.each do |topic| %>
-      <tr>
-        <td><%= topic.user.first_name %></td>
-        <td><%= topic.language.language %></td>
-        <td><%= topic.level %></td>
-        <td><%#= topic.tags %></td>
-        <td><%= topic.title %></td>
-        <td><%= topic.body %></td>
-        <td><%= topic.approved %></td>
-        <td><%= link_to 'Show', topic %></td>
-        <td><%#= link_to 'Edit', current_user.favorite(topic)%></td>
-        <td><%= link_to 'Favorite', edit_topic_path(topic) %></td>
-
-        <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      
+          <%= link_to topic.title, topic, class: "listing-topics" %>
         
+    
+       <%#= topic.title %>
+     
+        
+        
+        
+        <!-- <td><%#= link_to 'Show', topic %></td>
+        <td><%#= link_to 'Edit', current_user.favorite(topic)%></td>
+        <td><%#= link_to 'Favorite', topic.favorite, method: :post %></td>
+        <td><%#= link_to 'fav', topic, method: :post %></td> -->
+        <!-- <td><%#= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
 
-      </tr>
+        <%#= link_to "favorite", favorite_path(topic.id), method: :put %>
+
+        <%#= form_for topic, url: {action: "favorite"} method: :post do %>
+          <%#= submit_tag "Favorite" %>
+        <%# end %>
+
+   
     <% end %>
+        </div>
+
   </tbody>
 </table>
-
+</div>
 <br>
 
 <%= link_to 'New Topic', new_topic_path %>

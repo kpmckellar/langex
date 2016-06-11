@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160424223845) do
+ActiveRecord::Schema.define(version: 20160610023217) do
 
   create_table "languages", force: :cascade do |t|
     t.string   "language"
@@ -117,6 +117,11 @@ ActiveRecord::Schema.define(version: 20160424223845) do
   add_index "topics", ["language_id"], name: "index_topics_on_language_id"
   add_index "topics", ["tags_id"], name: "index_topics_on_tags_id"
   add_index "topics", ["user_id"], name: "index_topics_on_user_id"
+
+  create_table "topics_users", id: false, force: :cascade do |t|
+    t.integer "user_id",  null: false
+    t.integer "topic_id", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false

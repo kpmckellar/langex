@@ -1,3 +1,32 @@
 // Place all the styles related to the topics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.favorite-topics	{
+	margin: auto;
+	width: 50%;
+	font-size: 4em;
+	border: #5bc0de solid .25em;
+	margin-top: .5em;
+	padding: .25em;
+	text-align: left;
+}
+
+.favorite-topic-title	{
+	text-align: left;
+}
+
+.topic-wrapper	{
+	max-width: 110em;
+	margin: auto;
+}
+
+.listing-topics	{
+	width: 10em;
+	height: 10em;
+	display: inline-block;
+	border: solid #3498db .5em;
+	margin: 2%;
+	text-align: center;
+	font-size: 3em;
+}

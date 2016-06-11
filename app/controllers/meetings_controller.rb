@@ -45,7 +45,7 @@ class MeetingsController < ApplicationController
 
     respond_to do |format|
       if @meeting.save
-        format.html { redirect_to @meeting, notice: 'Your langauge exchange was successfully requested!' }
+        format.html { redirect_to home_url, notice: 'Your langauge exchange was successfully requested!' }
         format.json { render :show, status: :created, location: @meeting }
       else
         format.html { render :new }

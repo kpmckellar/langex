@@ -5,11 +5,21 @@ class TopicsController < ApplicationController
   # GET /topics.json
   def index
     @topics = Topic.all
+    if current_user.topics != nil
+       @current_topics = @current_user.topics 
+    else 
+      @currrent_topics = nil
+    end
   end
 
   # GET /topics/1
   # GET /topics/1.json
   def show
+    if current_user.topics != nil
+       @current_topics = @current_user.topics 
+    else 
+      @currrent_topics = [1]
+    end
   end
 
   # GET /topics/new
@@ -19,6 +29,19 @@ class TopicsController < ApplicationController
 
   # GET /topics/1/edit
   def edit
+  end
+
+  def favorite
+    topic = Topic.find(params[:id])
+    current_user.topics << topic
+    redirect_to topics_path, notice: 'Topic was favorited.'
+
+  end
+
+  def unfavorite
+    @topic = Topic.find(params[:id])
+    current_user.topics.delete(@topic)
+    redirect_to topics_path, notice: 'Topic was unfavorited.'
   end
 
   # POST /topics
@@ -62,6 +85,8 @@ class TopicsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
