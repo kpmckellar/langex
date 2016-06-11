@@ -40,8 +40,9 @@
 <div class="topic-wrapper">
 
 <h1>Browse conversation topics for your language exchange meetings.<br>Click any topic to read more, and save to your favorites.</h1>
+  
 
-
+  <% if @topics.exists? %>
     <% @topics.each do |topic| %>
       
           <%= link_to topic.title, topic, class: "listing-topics" %>
@@ -66,10 +67,9 @@
 
    
     <% end %>
-        </div>
 
-  </tbody>
-</table>
+        </div>
+  <% end %>
 </div>
 <br>
 
