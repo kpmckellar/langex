@@ -46,7 +46,7 @@
     <% @topics.each do |topic| %>
       
           <%= link_to topic.title, topic, class: "listing-topics" %>
-        
+          <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %>
     
        <%#= topic.title %>
      
@@ -57,7 +57,7 @@
         <td><%#= link_to 'Edit', current_user.favorite(topic)%></td>
         <td><%#= link_to 'Favorite', topic.favorite, method: :post %></td>
         <td><%#= link_to 'fav', topic, method: :post %></td> -->
-        <!-- <td><%#= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+        
 
         <%#= link_to "favorite", favorite_path(topic.id), method: :put %>
 
