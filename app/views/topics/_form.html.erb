@@ -1,3 +1,6 @@
+<div class="form_container">
+  <h1>Sugest a new topic!</h1>
+
 <%= form_for(@topic) do |f| %>
   <% if @topic.errors.any? %>
     <div id="error_explanation">
@@ -11,36 +14,40 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
+ 
+    <%#= f.label :user_id %><br>
     <%#= f.text_field :user_id %>
+  <div class="form-group">
+    <%#= f.label :title, class: "sr-only"%>
+    <%= f.text_field :title, class: "form-control input-lg", placeholder: "Topic Title" %>
   </div>
-  <div class="field">
-    <%= f.label :language_id %><br>
-    <%= f.text_field :language_id %>
+<br>
+  <div class="form-group">
+    <%#= f.label :body %>
+    <%= f.text_area :body, class: "form-control form-control-lg", placeholder: "Describe the topic or activity...", rows: "20" %>
+  </div>
+
+  <div class="c-select">
+    <%#= f.label :language_id %><br>
+    <%= f.collection_select(:language_id, Language.order('language ASC').all, :language, :language) %><br>
   </div>
   <div class="field">
     <%= f.label :level %><br>
     <%= f.number_field :level %>
   </div>
-  <div class="field">
-    <%= f.label :tags_id %><br>
-    <%= f.text_field :tags_id %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </div>
+ <!--  <div class="field">
+    <%#= f.label :tags_id %><br>
+    <%#= f.text_field :tags_id %>
+  </div> -->
+ 
+  
   <div class="field">
     <%= f.label :approved %><br>
     <%= f.check_box :approved %>
   </div>
   
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-default" %>
   </div>
 <% end %>
+</div>

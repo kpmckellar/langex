@@ -39,17 +39,17 @@
           <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
         </div>
        
-        <div class="form-group">
+        <div class="file">
               <%#= f.label :avatar, class: 'col-sm-2 control-label'  %>
               
-                  <%= f.file_field :avatar %>
+                  <%= f.file_field :avatar, class: "file-custom" %>
              <p class="help-block">Show us who you are!<br>Attach a well-lit photo, preferably where you are smiling :)</p>
         </div>
 
         <br>
         <div class="form-group">
           <p>What is your native language?</p>
-          <%= f.collection_select(:native_language, Language.order('language ASC').all, :language, :language) %><br>
+          <%= f.collection_select(:native_language, Language.order('language ASC').all, :language, :language, class: "c-select") %><br>
         </div>
 
           <div class="form-group">

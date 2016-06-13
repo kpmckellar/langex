@@ -1,50 +1,56 @@
 
+<div class="show_topic">
+
+
 
 <% if @current_user.topics.include? @topic %>
   <%= form_tag(controller: "topics", action: "unfavorite", method: "post") do %>
-      <%= submit_tag "Unfavorite"%>
+      <%= image_submit_tag("icons/heart", class: "favorited_heart_icon") %></p>
   <% end %>
 <% else %>
 
 
   <%= form_tag(controller: "topics", action: "favorite", method: "post") do %>
-      <%= submit_tag "Favorite"%>
+      <%= image_submit_tag("icons/heart", class: "unfavorited_heart_icon") %></p>
   <% end %>
 <% end %>
-<p>
+
+<h2 class="topic_title">
+  <%= @topic.title %>
+</h2>
+<%#= image_tag "icons/hearticon", class: "topic_heart_icon" %>
+<!-- <p>
   <strong>User:</strong>
-  <%= @topic.user.first_name %>
-</p>
+  <%#= @topic.user.first_name %>
+</p> -->
 
-<p>
+<!-- <p>
   <strong>Language:</strong>
-  <%= @topic.language.language %>
-</p>
+  <%#= @topic.language.language %>
+</p> -->
 
-<p>
-  <strong>Level:</strong>
-  <%= @topic.level %>
-</p>
+<!-- <h2>
+  <strong>Level </strong>
+  <%#= @topic.level %>
+</h2> -->
 
-<p>
+<!-- <p>
   <strong>Tags:</strong>
   <%#= @topic.tags %>
 </p>
+ -->
 
-<p>
-  <strong>Title:</strong>
-  <%= @topic.title %>
-</p>
 
-<p>
-  <strong>Body:</strong>
+<h6 class="topic_body">
   <%= @topic.body %>
-</p>
+</h6>
 
-<p>
+<!-- <p>
   <strong>Approved:</strong>
-  <%= @topic.approved %>
-</p>
+  <%#= @topic.approved %>
+</p> -->
+
+</div>
 
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
 <%= link_to 'Back', topics_path %>

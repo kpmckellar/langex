@@ -22,11 +22,14 @@
 					<p> No picture </p>
 				<% end %>
 			<% else %>
-				<%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-primary btn-lg pull-left" %>
-				<%= link_to 'Sign In', new_user_session_path, class: "btn btn-secondary-outline btn-lg pull-left" %>
+			
+					<%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-primary btn-lg pull-left", id: "registration_nav" %>
+			
+					<%= link_to 'Sign In', new_user_session_path, class: "btn btn-secondary-outline btn-lg pull-left", id: "registration_nav" %>
+		
 			<% end %>
 			
-			<%= link_to "Lexody", root_path %>
+			<%= link_to "Lexody", root_path, class: "logo" %>
 
 		</h1>
 	</header>
