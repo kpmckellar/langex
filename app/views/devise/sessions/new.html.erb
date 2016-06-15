@@ -1,21 +1,21 @@
 <div class="wrapper">
   <div class="form_container">
-    <h2>Log in</h2>
+    <h2 id="form-header">Log in</h2>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <%= f.label :first_name %><br />
+        <div class="form-group input-group-lg">
+          <%#= f.label :first_name %><br />
           <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First Name" %>
         </div>
 
 
-        <div class="field">
-          <%= f.label :email %><br />
+        <div class="form-group input-group-lg">
+          <%#= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
         </div>
 
-        <div class="field">
-          <%= f.label :password %><br />
+        <div class="form-group input-group-lg">
+          <%#= f.label :password %><br />
           <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
         </div>
 
@@ -29,7 +29,7 @@
         <% end %>
        </div>
         <div class="actions">
-          <%= f.submit "Log in", class: "btn btn-default" %>
+          <%= f.submit "Log in", class: "form-button" %>
         </div>
       <% end %>
 

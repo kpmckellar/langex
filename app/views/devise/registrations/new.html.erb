@@ -3,59 +3,58 @@
   <div class="content_wrapper">
     <div class="sign_up_container">
       <div class="form_container">
-      <h2>Sign up for the Waitlist</h2>
+        <h2 id="form-header">Sign up for the Waitlist</h2>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
 
-        <div class="form-group">
-          <%#= f.label :first_name %><br />
+        
+       
+        <div class="form-group input-group-lg">
 
           <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First Name"%>
         </div>
 
-        <div class="form-group">
-          <%#= f.label :last_name %><br />
+        <div class="form-group input-group-lg">
           <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
         </div>
 
-        <div class="form-group">
-          <%#= f.label :location %><br />
-          <%= f.text_field :location, class: "form-control", placeholder: "Current City" %>
-        </div>
+        <!-- <div class="form-group input-group-lg">
+          <%#= f.text_field :location, class: "form-control", placeholder: "Current City" %>
+        </div> -->
 
-        <div class="form-group">
-          <%#= f.label :nationality %><br />
-          <%= f.text_field :nationality, class: "form-control", placeholder: "Nationality" %>
-        </div>
+        <!-- <div class="form-group input-group-lg">
+          <%#= f.text_field :nationality, class: "form-control", placeholder: "Nationality" %>
+        </div> -->
 
-        <div class="form-group">
-          <%#= f.label :bio %><br />
-          <%= f.text_area :bio, class: "form-control", rows: 5, placeholder: "Tell us a little about you..." %>
-        </div>
-
-        <div class="form-group">
-          <%#= f.label :email %><br />
+        <!-- <div class="form-group input-group-lg">
+          <%#= f.text_area :bio, class: "form-control", rows: 5, placeholder: "Tell us a little about you..." %>
+        </div> -->
+        <div class="form-group input-group-lg">
           <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
         </div>
-       
-        <div class="file">
-              <%#= f.label :avatar, class: 'col-sm-2 control-label'  %>
-              
-                  <%= f.file_field :avatar, class: "file-custom" %>
-             <p class="help-block">Show us who you are!<br>Attach a well-lit photo, preferably where you are smiling :)</p>
+        
+        <br>
+
+       <div class="styled-select">
+          <p class="form-text">What is your native language?</p>
+          <%= f.collection_select(:native_language, Language.order('language ASC').all, :language, :language, class: "styled-select") %><br>
         </div>
+
+          <div class="styled-select">
+            <p class="form-text">What language are you currently learning?</p><p>(HINT: You can add more languages later, but this should be the top language you are learning)</p>
+          <%= f.collection_select(:learning_language, Language.order('language ASC').all, :language, :language, class: "styled-select") %><br>
+        </div>
+   
+<!--         <p class="help-block">Show us who you are!<br>Attach a well-lit photo, preferably where you are smiling :)</p>
+ -->
+        <!-- <div>              
+              <%#= f.file_field :avatar, class: "custom-upload" %>
+              <h3 class="file-upload-text">Click here to upload a profile picture</h3>
+        </div> -->
 
         <br>
-        <div class="form-group">
-          <p>What is your native language?</p>
-          <%= f.collection_select(:native_language, Language.order('language ASC').all, :language, :language, class: "c-select") %><br>
-        </div>
-
-          <div class="form-group">
-            <p>What language are you currently learning? (HINT: You can add more languages later, but this should be the top language you are learning)</p>
-          <%= f.collection_select(:learning_language, Language.order('language ASC').all, :language, :language) %><br>
-        </div>
+        
 
 
         
@@ -76,7 +75,7 @@
 
 
         
-        <div class="form-group">
+        <div class="form-group input-group-lg">
 
           <%= f.label :password %>
           <% if @minimum_password_length %>
@@ -85,13 +84,13 @@
           <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
         </div>
 
-        <div class="form-group">
+        <div class="form-group input-group-lg">
           <%#= f.label :password_confirmation %><br />
           <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password" %>
         </div>
-
+        <br>
         <div class="actions">
-          <%= f.submit "Sign up", class: "btn btn-default"%>
+          <%= f.submit "Sign up", class: "form-button"%>
         </div>
       <% end %>
       </div>

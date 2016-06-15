@@ -26,11 +26,14 @@
     <%#= f.label :body %>
     <%= f.text_area :body, class: "form-control form-control-lg", placeholder: "Describe the topic or activity...", rows: "20" %>
   </div>
+  
+  
 
-  <div class="c-select">
-    <%#= f.label :language_id %><br>
-    <%= f.collection_select(:language_id, Language.order('language ASC').all, :language, :language) %><br>
+  <div class="dropdown">
+    <%#= f.label :language_id %>
+    <%= f.collection_select(:language_id, Language.order('language ASC').all, :language, :language, class: "dropdown-content") %><br>
   </div>
+
   <div class="field">
     <%= f.label :level %><br>
     <%= f.number_field :level %>
