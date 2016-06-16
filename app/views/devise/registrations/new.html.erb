@@ -17,16 +17,16 @@
             <p class="form-text">What language are you currently learning?</p><p>(HINT: You can add more languages later, but this should be the top language you are learning)</p>
           <%= f.collection_select(:learning_language, Language.order('language ASC').all, :language, :language, class: "styled-select") %><br>
         </div>
-        
+
        <br>
         <div class="form-group input-group-lg">
 
           <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First Name"%>
         </div>
 
-        <div class="form-group input-group-lg">
-          <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
-        </div>
+        <!-- <div class="form-group input-group-lg">
+          <%#= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+        </div> -->
 
         <!-- <div class="form-group input-group-lg">
           <%#= f.text_field :location, class: "form-control", placeholder: "Current City" %>
@@ -85,10 +85,10 @@
           <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
         </div>
 
-        <div class="form-group input-group-lg">
+       <!--  <div class="form-group input-group-lg">
           <%#= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password" %>
-        </div>
+          <%#= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+        </div> -->
         <br>
         <div class="actions">
           <%= f.submit "Sign up", class: "form-button"%>
