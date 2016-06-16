@@ -44,44 +44,43 @@
 <br><br>
 <!-- table header stuff here -->
 <table>
-<<<<<<< HEAD
-<% @users.each do |u| %>
-  <tr>
-    <td><%= link_to_if(can?(:read, User), "#{u.first_name}", user_path(u.id)) {} %></td>
-    <td><%= "#{u.email}" %></td>
-    <td><%= "#{u.role.name}" rescue nil %></td>
+<!-- <<<<<<< HEAD
+ --><%# @users.each do |u| %>
+  <!-- <tr>
+    <td><%#= link_to_if(can?(:read, User), "#{u.first_name}", user_path(u.id)) {} %></td>
+    <td><%#= "#{u.email}" %></td>
+    <td><%#= "#{u.role.name}" rescue nil %></td>
     <td><%#= "#{u.roles.collect{|r| r.first_name}}" %></td>
-    <td><%= link_to_if(can?(:edit, User), image_tag("/images/edit_icon.gif"), edit_user_path(u.id)) {} %></td>
-    <td><%= link_to_if(can?(:delete, u), image_tag("/images/delete_icon.gif"), u, :confirm => "Are you sure?", :method => :delete) {} %></td>
-  </tr>
-<% end %>
-
-<br><br>
+    <td><%#= link_to_if(can?(:edit, User), image_tag("/images/edit_icon.gif"), edit_user_path(u.id)) {} %></td>
+    <td><%#= link_to_if(can?(:delete, u), image_tag("/images/delete_icon.gif"), u, :confirm => "Are you sure?", :method => :delete) {} %></td>
+  </tr> -->
+<%# end %>
 
 
-<%= form_for :user, :url => update_all_path, :html => { :method => :put } do %>
-  <table>
+
+<%#= form_for :user, :url => update_all_path, :html => { :method => :put } do %>
+  <!-- <table>
     <tr>
       <th>First Name</th>
       <th>Last Name</th>
       <th>E-Mail</th>
     </tr>
-    <% @users.each do |user| %>
-      <%= fields_for "user[]", user do |user_fields| %>
+    <%# @users.each do |user| %>
+      <%#= fields_for "user[]", user do |user_fields| %>
     <tr>
-      <td><%= user_fields.text_field :first_name %></td>
-      <td><%= user_fields.text_field :last_name %></td>
-      <td><%= user_fields.email_field :email %></td>
-      <td><%= user_fields.check_box :approved %></td>
+      <td><%#= user_fields.text_field :first_name %></td>
+      <td><%#= user_fields.text_field :last_name %></td>
+      <td><%#= user_fields.email_field :email %></td>
+      <td><%#= user_fields.check_box :approved %></td>
     </tr>
-      <% end %>
-    <% end %>
+      <%# end %>
+    <%# end %>
   </table>
 
   <div class="actions">
-    <%= submit_tag %>
+    <%#= submit_tag %>
   </div>
-<% end %>
+<%# end %> -->
 
 
 
@@ -90,20 +89,20 @@
 
 
 
-=======
-    <% @users.each do |u| %>
+<!-- ======= -->
+<!--     <%# @users.each do |u| %>
       <tr>
-        <td><%= link_to_if(can?(:read, User), "#{u.first_name}", user_path(u.id)) {} %></td>
-        <td><%= "#{u.email}" %></td>
-        <td><%= "#{u.role.name}" rescue nil %></td>
-        <td><%= "#{u.approved}" rescue nil %></td>
+        <td><%#= link_to_if(can?(:read, User), "#{u.first_name}", user_path(u.id)) {} %></td>
+        <td><%#= "#{u.email}" %></td>
+        <td><%#= "#{u.role.name}" rescue nil %></td>
+        <td><%#= "#{u.approved}" rescue nil %></td>
 
         <td><%#= "#{u.roles.collect{|r| r.first_name}}" %></td>
-        <td><%= link_to_if(can?(:edit, User), "Edit", edit_user_path(u.id)) {} %></td>
-        <td><%= link_to_if(can?(:delete, u), image_tag("/images/delete_icon.gif"), u, :confirm => "Are you sure?", :method => :delete) {} %></td>
+        <td><%#= link_to_if(can?(:edit, User), "Edit", edit_user_path(u.id)) {} %></td>
+        <td><%#= link_to_if(can?(:delete, u), image_tag("/images/delete_icon.gif"), u, :confirm => "Are you sure?", :method => :delete) {} %></td>
       </tr>
-    <% end %>
-</table>
+    <%# end %>
+</table> -->
 
     <div>
         <%= render partial: 'waitlist' %>
@@ -112,4 +111,5 @@
 
 </body>
 </html>
->>>>>>> waitlist
+<!-- >>>>>>> waitlist
+ -->
