@@ -14,7 +14,7 @@
         </div>
 
           <div class="styled-select">
-            <p class="form-text">What language are you currently learning?</p><p>(HINT: You can add more languages later, but this should be the top language you are learning)</p>
+            <p class="form-text">What language are you currently learning?</p>
           <%= f.collection_select(:learning_language, Language.order('language ASC').all, :language, :language, class: "styled-select") %><br>
         </div>
 
@@ -54,22 +54,21 @@
               <h3 class="file-upload-text">Click here to upload a profile picture</h3>
         </div> -->
 
-        <br>
         
 
 
         
           <%# lu.fields_for :langauges_user do |lu| %>
-        <% resource.languages_users.each do |languages_user| %>
+        <%# resource.languages_users.each do |languages_user| %>
 
-          <%= f.fields_for :languages_user do |lu| %>
+          <%#= f.fields_for :languages_user do |lu| %>
             <%#= lu.text_field :language_id %>
-            <div class="fields">
-            <%= lu.collection_select(:language_id, Language.order('language ASC').all, :id, :language) %><br>
-            <%= lu.hidden_field :level, value: 1 %>
-            </div>
-          <% end %>
-        <% end %>
+          <!--   <div class="fields">
+            <%#= lu.collection_select(:language_id, Language.order('language ASC').all, :id, :language) %><br>
+            <%#= lu.hidden_field :level, value: 1 %>
+            </div> -->
+          <%# end %>
+        <%# end %>
         
 
         <br>
