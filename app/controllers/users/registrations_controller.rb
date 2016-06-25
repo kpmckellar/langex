@@ -74,12 +74,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  def after_sign_up_path_for(resource)
-     new_languages_user_path(resource)
-  end
+  # def after_sign_up_path_for(resource)
+  #    new_languages_user_path(resource)
+  # end
 
   def after_inactive_sign_up_path_for(resource)
+
+    session[:current_user_id] = resource.id
+
+
     '/profile/waitlist' # Or :prefix_to_your_route
+
   end
 
   # The path used after sign up for inactive accounts.

@@ -56,6 +56,8 @@ class ProfileController < ApplicationController
 		user_count = users.count
 		@waitlist_count = (user_count + 250)
 
+	    @id = session[:current_user_id]
+
 
 	end
 
