@@ -1,0 +1,19 @@
+<% if user_signed_in? %>
+					<div class="fixed_profile_nav" >
+						<%= link_to image_tag("icons/comment"), conversations_path, :class => 'side_nav_icon' %>
+						<%= link_to image_tag("icons/gear"), edit_user_registration_path, :class => 'side_nav_icon' %>
+						<%= link_to image_tag("icons/comment"), conversations_path, :class => 'side_nav_icon' %>
+							<% if @current_user.approved? %>
+								<%= link_to image_tag("icons/heart"), users_path, :class => 'side_nav_icon' %>
+							<% end %>
+						
+					</div>
+				<% end %>
+
+<div class="wrapper">
+	<div class="content-wrapper">
+		<h1 class="content-heading">You have joined the Waitlist!</h1>
+
+		<h3>You are #<%= @waitlist_count %> on the waitlist.<br>We will contact you when you are approved.</h3>
+	</div>
+</div>

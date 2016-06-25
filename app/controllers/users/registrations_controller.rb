@@ -41,8 +41,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-   protected
-
+ 
 
 
   protected
@@ -77,6 +76,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up.
   def after_sign_up_path_for(resource)
      new_languages_user_path(resource)
+  end
+
+  def after_inactive_sign_up_path_for(resource)
+    '/profile/waitlist' # Or :prefix_to_your_route
   end
 
   # The path used after sign up for inactive accounts.

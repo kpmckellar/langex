@@ -6,7 +6,7 @@
 	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	  <%= csrf_meta_tags %>
-	</head>
+	
 	 <header class="header_banner">
 		
 
@@ -34,7 +34,7 @@
 		</h1>
 	</header>
 
-
+	</head>
 		<body>
 			
  				 
@@ -51,6 +51,22 @@
 				    <h2 class="alert alert-success"><center><%= flash[:notice] %></center></h2>
 				 
 					
+				<% end %>
+
+			<!-- SIDE NAV -->
+					<!-- <div class="profile-container">
+	<div class"wrapper"> -->
+		
+				<% if user_signed_in? %>
+					<div class="fixed_profile_nav" >
+						<%= link_to image_tag("icons/comment"), conversations_path, :class => 'side_nav_icon' %>
+						<%= link_to image_tag("icons/gear"), edit_user_registration_path, :class => 'side_nav_icon' %>
+						<%= link_to image_tag("icons/comment"), conversations_path, :class => 'side_nav_icon' %>
+							<% if @current_user.approved? %>
+								<%= link_to image_tag("icons/heart"), users_path, :class => 'side_nav_icon' %>
+							<% end %>
+						
+					</div>
 				<% end %>
 			
 			<!-- <div class="col-md-4" style=""> -->

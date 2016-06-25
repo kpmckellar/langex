@@ -55,6 +55,17 @@ a:hover	{
 	padding-top: 10em;
 }
 
+.content-wrapper  {
+  text-align: center;
+  margin: auto;
+  padding: 3em;
+}
+
+.content-heading  {
+  padding-bottom: .5em;
+  margin-bottom: 1em;
+}
+
 .clear	{
 	clear: both;
 }
@@ -88,6 +99,41 @@ a:hover	{
 .logo:visited	{
 	color: white;
 }
+
+.fixed_profile_nav  {
+    display: inline;
+    top: 6em;
+    right: 0em;
+    position: fixed;
+    float: right;
+    width: 2.5em;
+    font-size: 3.5em;
+}
+
+.side_nav_icon  {
+
+  width: 1.79em;
+  height: 1.79em;
+  display: block;
+  border-radius: 100%;
+  margin-right: .35em;
+  margin-top: .35em;
+  float: right;
+  text-align: center;
+  text-color: #26C6DA;
+ 
+  background-color: #9E9E9E;
+  -webkit-box-shadow: 3px 2px 21px -4px rgba(158,158,158,1);
+  -moz-box-shadow: 3px 2px 21px -4px rgba(158,158,158,1);
+  box-shadow: 3px 2px 21px -4px rgba(158,158,158,1);
+}
+
+.side_nav_icon:hover  {
+  background-color: rgb(52, 152, 219);
+
+}
+
+
 
 .user_picture	{
 	height:  2em;
@@ -133,15 +179,6 @@ a:hover	{
 	width: 30%;
 }	
 
-.profile_nav_button	{
-	display: block;
-    border: solid .07em #B2EBF2;
-    text-color: #26C6DA;
-    padding: .25em;
-    height: 1.9em;
-    
-   
-}
 
 .btn-profile	{
 	font-family: "Helvetica";

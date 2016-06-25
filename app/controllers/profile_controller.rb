@@ -1,7 +1,7 @@
 class ProfileController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, except: [:waitlist]
 
-	before_filter :approval_required
+	before_filter :approval_required, except: [:waitlist]
 
 
 	def home
@@ -49,6 +49,16 @@ class ProfileController < ApplicationController
 		@fluent_languages = LanguagesUser.where(user: @user).where("level > 4")
   		@nonfluent_languages = LanguagesUser.where("level < 5").where(user: @user)
 	end
+
+	def waitlist
+
+		users = User.where(approved = nil)
+		user_count = users.count
+		@waitlist_count = (user_count + 250)
+
+
+	end
+
 	private
 
 	def approval_required

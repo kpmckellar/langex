@@ -1,3 +1,4 @@
+
 // Place all the styles related to the roles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
@@ -32,21 +33,30 @@
 
 
 .other_user_picture	{
-	height: 45%;
-	width: 45%;
-	border-radius: 100%;
-	overflow: hidden;
-	text-align: left;
-	margin: 0 .5em 5em .5em;
+	height: 90%;
+    width: 30%;
+    margin: 1em;
+    border-radius: 100%;
+    overflow: hidden;
+    padding: .5em;
+    margin-right: 2em;
+    float: left;
+    border: 3px white solid;
 }
 
-.meetings_container	{
-	width: 80%;
-	height: 43em;
-	margin: auto;
-	margin-top: 2em;
-	margin-bottom: 5em;
 
+
+.meeting_information	{
+	width: 100%;
+    height: 17em;
+    float: right;
+    background-color: #FF4081;
+    border: 3px white solid;
+    margin-top: 1em;
+}
+
+.meeting_information:first-child	{
+	margin-top: 0;
 }
 
 .meeting_user_information	{
@@ -58,19 +68,34 @@
 	
 }
 
+.meeting_time	{
+	display: inline-block;
+	margin-right: 1em;
+	padding: 0;
+	text-align: right;
+	postion-top: 0;
+	float: right;
+	color: white;
+}
 
-
-.fixed_profile_nav	{
-	display: inline;
-    top: 5em;
-    right: 0em;
-    position: fixed;
-    float: right;
-    background-color: rgba(149, 165, 166,1.0);
-    width: 1.75em;
-   	font-size: 3em;
+.meeting-buttons	{
+	position: relative;
+	display: inline-block;
 
 }
+
+#meeting-button	{
+	display: block;
+	float: right;
+	padding: .5em;
+	border: 1px white solid;
+	border-radius: 5%;
+	font-size: 18px;
+	margin: .5em;
+	color: white;
+}
+
+
 
 .user_profile_wrapper	{
 	padding: 5em;
@@ -100,6 +125,45 @@
 
 .match-profile-container {
 	width: 50em;
-	background-color: red;
 	margin: 5em;
+	padding: 1em;
 }
+
+.user-information	{
+	margin: auto;
+    background-color: #90CAF9;
+    display: block;
+    width: 60em;
+    border-radius: 1em;
+    padding: 3em;
+    size: 2em;
+}
+
+.profile_button	{
+	padding: .75em;
+    border: 3px #757575 solid;
+    font-size: 2em;
+    text-align: center;
+    display: inline-block;
+    width: 10em;
+	margin: 1em;
+}
+
+#user-name-profile	{
+	font-size: 5em;
+	color: #757575;
+	display: block;
+}
+
+
+.user-buttons	{
+	margin: auto;
+	width: 50em;
+}
+
+.user-buttons:second-child	{
+	float: right;
+}
+
+
+

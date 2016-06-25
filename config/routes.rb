@@ -56,6 +56,8 @@ Rails.application.routes.draw do
   get 'messages/send_message', to: 'messages#send_message', as: 'send_message'
   get 'profile/home', to: 'profile#home', as: 'home' 
   get 'profile/:id/view', to: 'profile#view', as: 'view' 
+  get 'profile/waitlist', to: 'profile#waitlist', as: 'waitlist' 
+
   get 'profile/:languages_user_id/manage', to: 'profile#manage', as: 'manage'
   get 'profile/admin_view', to: 'profile#admin_view', as: 'admin_view'
   get 'languages_users/:id/edit', to: 'languages_users#edit', as: 'edit'

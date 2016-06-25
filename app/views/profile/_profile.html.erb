@@ -1,15 +1,15 @@
 
 <div class="user_profile_wrapper">
+		<h4 id="user-name-profile"><%= @user.first_name %></h4>
+		<div class="user-buttons">
 
+			<%= link_to 'Request Meeting', new_meeting_path(requestee_id: @user.id), class: 'profile_button' %>
 
+			<%= link_to 'Send message', new_message_path(to: @user.id), class: 'profile_button' %>
+		</div>
+	<div class="user-information">
 
-	<div class="col-xs-4 text-right .col-md-offset-1">
-		<%= link_to 'Request Meeting', new_meeting_path(requestee_id: @user.id), class: 'btn btn-default btn-sm' %>
-
-		<%= link_to 'Send message', new_message_path(to: @user.id), class: 'btn btn-default btn-sm' %>
-
-		<h4 class="text-right"><%= @user.first_name %></h4>
-		<h5 class="text-right"><%= @user.location %></h5>
+		<h5><%= @user.location %></h5>
 		<h6>Fluent in:</h6>
 			<% @fluent_languages.each do |proficiency| %>
 				<p><%= proficiency.language.language rescue nil %></p>
