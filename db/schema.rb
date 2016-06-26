@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160610023217) do
+ActiveRecord::Schema.define(version: 20160625225534) do
 
   create_table "languages", force: :cascade do |t|
     t.string   "language"
@@ -154,6 +154,7 @@ ActiveRecord::Schema.define(version: 20160610023217) do
     t.integer  "role_id"
     t.string   "native_language"
     t.string   "learning_language"
+    t.integer  "referral_count",         default: 0
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

@@ -3,6 +3,8 @@ class ProfileController < ApplicationController
 
 	before_filter :approval_required, except: [:waitlist]
 
+	
+
 
 	def home
 		@fluent_languages = LanguagesUser.where(user: current_user.id).where("level > 4")

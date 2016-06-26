@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  attr_accessor :referral_code
   scope :seeking_proficiency_in, ->(language) { joins(:languages_users).where("level < 5 and language_id = ?", language) }
   scope :proficient_in, ->(language) { joins(:languages_users).where("level > 4 and language_id = ?", language) }
   devise :database_authenticatable, :registerable,
@@ -19,9 +20,31 @@ class User < ActiveRecord::Base
 
 	
   before_save :assign_role
+  
+
+
 
   def assign_role
     self.role = Role.find_by name: "user" if self.role.nil?
+  end
+
+
+  after_create :check_referral_code
+
+  def check_referral_code
+    if self.referral_code != nil
+      self.referral_code = self.referral_code.strip
+      referral_code = self.referral_code
+      length = referral_code.length
+      referral_code = referral_code[5..length]
+      @user_referral_code = referral_code.to_i 
+
+      if User.exists?(id: @user_referral_code)
+        referral_user = User.find_by_id(@user_referral_code)
+        referral_user.referral_count = referral_user.referral_count + 1
+        referral_user.save
+      end
+    end
   end
 
   has_many :languages_users

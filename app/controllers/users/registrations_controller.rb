@@ -1,4 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+
+
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
 
@@ -46,11 +48,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-      # def configure_permitted_parameters
+      def configure_permitted_parameters
 
-      # devise_parameter_sanitizer.for(:sign_up) { |u|
-      #   u.permit(:email, :password, :password_confirmation, :bio, :location, :last_name, :first_name, :nationality, :avatar, languages_users_attributes: [:language_id, :level]) }
-      # end
+      devise_parameter_sanitizer.for(:sign_up) { |u|
+        u.permit(:email, :password, :password_confirmation, :bio, :location, :last_name, :first_name, :nationality, :avatar, :referral_code, :native_language, :learning_language, languages_users_attributes: [:language_id, :level]) }
+      end
   
   # def sign_up_params(:user)
   #   #allow = [:email, :password, :password_confirmation, [languages_user_attributes: [:language_id, :user_id, :level]]]
@@ -83,7 +85,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session[:current_user_id] = resource.id
 
 
+
     '/profile/waitlist' # Or :prefix_to_your_route
+
 
   end
 
