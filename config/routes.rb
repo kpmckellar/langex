@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 
 
+  resources :unis
+  resources :schools
   resources :roles
   resources :tags
   resources :topics
