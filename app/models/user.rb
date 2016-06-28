@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :role
-
+  belongs_to :college
   has_and_belongs_to_many :topics
   
   acts_as_messageable
@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   end
 
 
-  after_create :check_referral_code
+ after_create :check_referral_code
 
   def check_referral_code
     if self.referral_code != nil
@@ -46,6 +46,7 @@ class User < ActiveRecord::Base
       end
     end
   end
+
 
   has_many :languages_users
 	has_many :languages, :through => :languages_users

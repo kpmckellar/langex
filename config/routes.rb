@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+  resources :colleges
   resources :roles
   resources :tags
   resources :topics
