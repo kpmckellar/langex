@@ -1,14 +1,4 @@
-<% if user_signed_in? %>
-					<div class="fixed_profile_nav" >
-						<%= link_to image_tag("icons/comment"), conversations_path, :class => 'side_nav_icon' %>
-						<%= link_to image_tag("icons/gear"), edit_user_registration_path, :class => 'side_nav_icon' %>
-						<%= link_to image_tag("icons/comment"), conversations_path, :class => 'side_nav_icon' %>
-							<% if @current_user.approved? %>
-								<%= link_to image_tag("icons/heart"), users_path, :class => 'side_nav_icon' %>
-							<% end %>
-						
-					</div>
-				<% end %>
+
 
 <div class="wrapper">
 	<div class="content-wrapper">

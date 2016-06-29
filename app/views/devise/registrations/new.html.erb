@@ -44,7 +44,10 @@
         </div>
         
 
-
+        <div class="styled-select">
+          <%= f.label :college_id %>
+          <%= collection_select(:user, :college_id, College.all, :id, :name,  {prompt: true}, class: "styled-select") %>
+        </div>
       
    
 <!--         <p class="help-block">Show us who you are!<br>Attach a well-lit photo, preferably where you are smiling :)</p>
