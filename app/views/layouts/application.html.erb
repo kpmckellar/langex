@@ -61,12 +61,12 @@
 					<div class="fixed_profile_nav" >
 						<%= link_to image_tag("icons/comment"), conversations_path, :class => 'side_nav_icon' %>
 						<%= link_to image_tag("icons/gear"), edit_user_registration_path, :class => 'side_nav_icon' %>
-						<%= link_to image_tag("icons/comment"), conversations_path, :class => 'side_nav_icon' %>
 							<% if @current_user != nil %>
 								<% if @current_user.approved? %>
 									<%= link_to image_tag("icons/heart"), users_path, :class => 'side_nav_icon' %>
 								<% end %>
 							<% end %>
+						<%= link_to image_tag("icons/heart"), destroy_user_session_path, method: :delete, :class => 'side_nav_icon' %>
 					</div>
 				<% end %>
 			
