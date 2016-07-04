@@ -20,7 +20,9 @@
         <div class="styled-select">
           <p class="form-text">Choose your college</p>
           <%#= f.label :college_id %>
-          <%= collection_select(:user, :college_id, College.all, :id, :name, class: "styled-select") %>
+          <% if College.all != nil %>
+            <%= collection_select(:user, :college_id, College.all, :id, :name, class: "styled-select") %>
+          <% end %>
         </div>
       
 
