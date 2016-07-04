@@ -52,7 +52,7 @@ a:hover	{
 	background-color: rgb(244, 252, 252);
 	margin: auto;
 	padding-bottom: 7em;
-	padding-top: 10em;
+	padding-top: 5em;
 }
 
 .content-wrapper  {
@@ -190,24 +190,20 @@ a:hover	{
 	boarder: 1px solid;
 	}
 
-#footer {
-	clear: both;
-    height: 10em;
+.footer {
+background:#212121;
+padding:3em;
+color:#fff;
 }
 
-.footer_nav	{
-	color: #B5B5B5;
-	height: 1em;
-	text-align: right;
-}
 
 
 .styled-select {
     position: relative;
     width: 100%;
     margin: 0 auto;
-    margin-bottom: 2em;
-    margin-top: 2em;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
     background: #fff;
     border-radius: 7px;
     cursor: pointer;
@@ -217,6 +213,10 @@ a:hover	{
     font-size: 1.5em;
 
    }
+.styled-select:last-of-type  {
+      margin-bottom: 2em;
+
+}
 
  .styled-select  select{
    width: 100%;
@@ -266,11 +266,11 @@ a:hover	{
 }
 
 .form_container {
-  width: 50em;
+  width: 40em;
   margin: auto;
   margin-top: 3em;
   background-color: white;
-  padding: 3em;
+  padding: 2.5em;
   border: solid #B6B6B6 .25em;
   border-radius: 1.5%;
 }
@@ -285,6 +285,6 @@ a:hover	{
   padding-bottom: .75em;
   border-bottom: solid .15em #3498db;
   margin-bottom: 1em;
-  font-size: 50px;
+  font-size: 45px;
   text-align: center;
 }

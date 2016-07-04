@@ -14,11 +14,16 @@
         </div>
 
           <div class="styled-select">
-            <p class="form-text">What language are you currently learning?</p><p>(HINT: You can add more languages later, but this should be the top language you are learning)</p>
+            <p class="form-text">What language are you learning?</p><p>(HINT: You can add more languages later, but this should be the top language you are learning)</p>
           <%= f.collection_select(:learning_language, Language.order('language ASC').all, :language, :language, class: "styled-select") %><br>
         </div>
+        <div class="styled-select">
+          <p class="form-text">Choose your college</p>
+          <%#= f.label :college_id %>
+          <%= collection_select(:user, :college_id, College.all, :id, :name, class: "styled-select") %>
+        </div>
+      
 
-       <br>
         <div class="form-group input-group-lg">
 
           <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First Name"%>
@@ -44,11 +49,7 @@
         </div>
         
 
-        <div class="styled-select">
-          <%= f.label :college_id %>
-          <%= collection_select(:user, :college_id, College.all, :id, :name,  {prompt: true}, class: "styled-select") %>
-        </div>
-      
+        
    
 <!--         <p class="help-block">Show us who you are!<br>Attach a well-lit photo, preferably where you are smiling :)</p>
  -->
