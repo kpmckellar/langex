@@ -1,0 +1,52 @@
+
+      <%= form_for(@waitlist_request) do |f| %>
+        <% if @waitlist_request.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@waitlist_request.errors.count, "error") %> prohibited this waitlist_request from being saved:</h2>
+
+            <ul>
+            <% @waitlist_request.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        
+
+
+        <div class="form-group input-group-lg">
+          <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First Name"%>
+        </div>
+
+        <div class="form-group input-group-lg">
+          <%= f.text_field :last_name, autofocus: true, class: "form-control", placeholder: "Last Name"%>
+        </div>
+        
+        <div class="form-group input-group-lg">
+          <%= f.text_field :email, autofocus: true, class: "form-control", placeholder: "Email"%>
+        </div>
+
+        <div class="form-group input-group-lg">
+          <%= f.text_field :city, autofocus: true, class: "form-control", placeholder: "City"%>
+        </div>
+
+        <div class="form-group input-group-lg">
+          <%= f.text_field :country, autofocus: true, class: "form-control", placeholder: "Country"%>
+        </div>
+        <br>
+        <div class="styled-select">
+          <p class="form-text">What is your native language?</p>
+          <%= f.collection_select(:native_language, Language.order('language ASC').all, :id, :language, class: "styled-select") %><br>
+        </div>
+
+          <div class="styled-select">
+            <p class="form-text">What language are you learning?</p><p>(HINT: You can add more languages later, but this should be the top language you are learning)</p>
+          <%= f.collection_select(:learning_language, Language.order('language ASC').all, :id, :language, class: "styled-select") %><br>
+        </div>
+
+  
+        <div class="actions">
+          <%= f.submit "Request Membership!", class: "form-button"%>
+        </div>
+      <% end %>

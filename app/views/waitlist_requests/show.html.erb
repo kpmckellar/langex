@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @waitlist_request.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @waitlist_request.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @waitlist_request.email %>
+</p>
+
+<p>
+  <strong>Native language:</strong>
+  <%= @waitlist_request.native_language %>
+</p>
+
+<p>
+  <strong>Learning language:</strong>
+  <%= @waitlist_request.learning_language %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @waitlist_request.city %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @waitlist_request.country %>
+</p>
+
+<%= link_to 'Edit', edit_waitlist_request_path(@waitlist_request) %> |
+<%= link_to 'Back', waitlist_requests_path %>

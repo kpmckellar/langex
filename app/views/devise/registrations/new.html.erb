@@ -22,7 +22,10 @@
           <%#= f.label :college_id %>
           <%= collection_select(:user, :college_id, College.all, :id, :name, class: "styled-select") %>
         </div>
-      
+        <div>
+        <p>
+        <%= link_to "I'm not an NYC student", new_waitlist_request_path, class: "link-form-button" %>
+        </p>
 
         <div class="form-group input-group-lg">
 
@@ -101,6 +104,9 @@
         <br>
         <div class="actions">
           <%= f.submit "Sign up", class: "form-button"%>
+
+        </div>
+        <div class="actions">
         </div>
       <% end %>
       </div>

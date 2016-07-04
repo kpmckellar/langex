@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  email: MyString
+  native_language: 1
+  learning_language: 1
+  city: MyString
+  country: MyString
+
+two:
+  first_name: MyString
+  last_name: MyString
+  email: MyString
+  native_language: 1
+  learning_language: 1
+  city: MyString
+  country: MyString

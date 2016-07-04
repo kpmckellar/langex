@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+  resources :waitlist_requests
   resources :colleges
   resources :roles
   resources :tags

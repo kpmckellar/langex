@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Waitlist Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Native language</th>
+      <th>Learning language</th>
+      <th>City</th>
+      <th>Country</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @waitlist_requests.each do |waitlist_request| %>
+      <tr>
+        <td><%= waitlist_request.first_name %></td>
+        <td><%= waitlist_request.last_name %></td>
+        <td><%= waitlist_request.email %></td>
+        <td><%= waitlist_request.native_language %></td>
+        <td><%= waitlist_request.learning_language %></td>
+        <td><%= waitlist_request.city %></td>
+        <td><%= waitlist_request.country %></td>
+        <td><%= link_to 'Show', waitlist_request %></td>
+        <td><%= link_to 'Edit', edit_waitlist_request_path(waitlist_request) %></td>
+        <td><%= link_to 'Destroy', waitlist_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Waitlist request', new_waitlist_request_path %>
